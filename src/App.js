@@ -32,6 +32,8 @@ function App() {
         type={"secondary"}
         textColor={"var(--correct)"}
       ></Button>
+      <Button text={"haha"} type={"primary"} textColor={"var(--card)"}></Button>
+
       <Typography text="assdgsdgsd" type="branding" _fontweight={300} />
       <p>{imgUrl}</p>
       <InputDefault

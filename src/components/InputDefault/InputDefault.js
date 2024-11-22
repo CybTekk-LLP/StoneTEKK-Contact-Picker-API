@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import styles from "./InputDefault.module.css";
 import Typography from "../Typography/Typography";
 
-function InputDefault({
+const InputDefault = ({
   type,
   inputLabel,
   placeholder,
   autoComplete,
   _inputMode,
   handleValue,
-}) {
+}) => {
   const [value, setValue] = useState();
 
   const handleInput = (e) => {
@@ -34,6 +34,6 @@ function InputDefault({
       />
     </div>
   );
-}
+};
 
 export default InputDefault;

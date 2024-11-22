@@ -1,14 +1,14 @@
 import React from "react";
 import styles from "./Typography.module.css";
 
-function Typography({
+const Typography = ({
   text,
   type,
   renderInline = false,
   disabled = false,
   _color,
   _fontweight,
-}) {
+}) => {
   return (
     <span
       className={`${styles.typography} ${styles[type]} ${
@@ -19,6 +19,6 @@ function Typography({
       {text}
     </span>
   );
-}
+};
 
 export default Typography;

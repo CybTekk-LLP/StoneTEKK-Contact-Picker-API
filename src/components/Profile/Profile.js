@@ -3,7 +3,7 @@ import styles from "./Profile.module.css";
 import editPen from "./../../images/EditPen.svg";
 import defaultProfilePic from "./../../images/DefaultProfilePic.svg";
 
-function Profile({ getImage }) {
+const Profile = ({ getImage }) => {
   const [value, setValue] = useState(defaultProfilePic);
 
   const getProfileImage = (e) => {
@@ -29,6 +29,6 @@ function Profile({ getImage }) {
       <img class={styles.profilePic} src={value} alt="profile" height="160px" />
     </div>
   );
-}
+};
 
 export default Profile;

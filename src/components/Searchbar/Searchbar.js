@@ -11,7 +11,7 @@ function debounce(func, delay) {
   };
 }
 
-function Searchbar({ onSearch }) {
+const Searchbar = ({ onSearch }) => {
   const [value, setValue] = useState("");
 
   const debouncedSearch = useCallback(
@@ -44,6 +44,6 @@ function Searchbar({ onSearch }) {
       />
     </search>
   );
-}
+};
 
 export default Searchbar;
