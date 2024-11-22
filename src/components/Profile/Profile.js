@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Profile.css";
+import styles from "./Profile.module.css";
 import editPen from "./../../images/EditPen.svg";
 import defaultProfilePic from "./../../images/DefaultProfilePic.svg";
 
@@ -16,7 +16,7 @@ function Profile({ getImage }) {
   };
 
   return (
-    <div className="profile-wrapper">
+    <div className={styles.profileWrapper}>
       <label for="profile-pic" aria-label="Edit Icon">
         <img src={editPen} alt="Edit Icon" />
       </label>
@@ -26,7 +26,7 @@ function Profile({ getImage }) {
         onChange={getProfileImage}
         accept="image/*"
       />
-      <img class="profile-pic" src={value} alt="profile" height="160px" />
+      <img class={styles.profilePic} src={value} alt="profile" height="160px" />
     </div>
   );
 }

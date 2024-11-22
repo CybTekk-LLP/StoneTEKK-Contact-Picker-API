@@ -1,5 +1,5 @@
 import React from "react";
-import "./Typography.css";
+import styles from "./Typography.module.css";
 
 function Typography({
   text,
@@ -10,16 +10,14 @@ function Typography({
   _fontweight,
 }) {
   return (
-    <>
-      <span
-        className={`typography ${type} ${!renderInline && "block"} ${
-          disabled && "disabled"
-        }`}
-        style={{ color: _color, fontWeight: _fontweight }}
-      >
-        {text}
-      </span>
-    </>
+    <span
+      className={`${styles.typography} ${styles[type]} ${
+        !renderInline && styles.block
+      } ${disabled && styles.disabled}`}
+      style={{ color: _color, fontWeight: _fontweight }}
+    >
+      {text}
+    </span>
   );
 }
 

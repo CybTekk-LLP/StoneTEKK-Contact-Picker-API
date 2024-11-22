@@ -3,14 +3,14 @@
   inline-size: 100%;
 }
 
-.search-label {
+.searchLabel {
   position: absolute;
   inset-inline-start: 10px;
   inset-block-start: 50%;
   translate: 0 -50%;
 }
 
-input {
+input[type="search"] {
   block-size: 50px;
   inline-size: 100%;
   font-family: var(--body-font);
@@ -22,20 +22,20 @@ input {
   background-color: var(--card);
 }
 
-input::placeholder {
+input[type="search"]::placeholder {
   font-size: 1.25rem;
   font-family: var(--body-font);
   font-weight: 400;
 }
 
-input::-webkit-search-decoration,
-input::-webkit-search-cancel-button,
-input::-webkit-search-results-button,
-input::-webkit-search-results-decoration {
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
   display: none;
 }
 
-input::-webkit-search-cancel-button {
+input[type="search"]::-webkit-search-cancel-button {
   position: relative;
   inset-inline-end: 20px;
   display: block;
@@ -49,6 +49,6 @@ input::-webkit-search-cancel-button {
   background-image: url("./../../images/Cancel.svg");
 }
 
-input:focus {
+input[type="search"]:focus {
   outline: 1px solid var(--correct-translucent);
 }

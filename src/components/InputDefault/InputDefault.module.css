@@ -1,0 +1,49 @@
+.customInput {
+  inline-size: 100%;
+}
+
+.inputLabel {
+  display: inline-block;
+  margin-inline-start: 22px;
+  margin-block-end: 5px;
+}
+
+.inputField {
+  block-size: 50px;
+  inline-size: 100%;
+  font-family: var(--body-font);
+  font-size: 1.25rem;
+  font-weight: 400;
+  padding-inline-start: 22px;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--card);
+}
+
+.inputField::placeholder {
+  font-size: 1.25rem;
+  font-family: var(--body-font);
+  font-weight: 400;
+}
+
+.inputField:focus {
+  outline: 1px solid var(--correct-translucent);
+}
+
+input:is([type="number"])::-webkit-outer-spin-button,
+input:is([type="number"])::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+input:is([type="number"]) {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--card) inset !important;
+}

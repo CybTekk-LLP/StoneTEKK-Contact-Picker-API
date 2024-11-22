@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from "react";
-import "./Searchbar.css";
+import styles from "./Searchbar.module.css";
+
 import searchIcon from "./../../images/Searchbar.svg";
 
 function debounce(func, delay) {
@@ -27,13 +28,13 @@ function Searchbar({ onSearch }) {
   };
 
   return (
-    <search className="searchbar">
-      <label className="search-label" htmlFor="search">
+    <search className={styles.searchbar}>
+      <label className={styles.searchLabel} htmlFor="search">
         <img src={searchIcon} alt="Search icon" />
       </label>
       <input
         id="search"
-        className="input-search"
+        className={styles.inputSearch}
         tabIndex={1}
         type="search"
         value={value}
