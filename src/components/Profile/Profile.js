@@ -17,7 +17,7 @@ const Profile = ({ getImage }) => {
 
   return (
     <div className={styles.profileWrapper}>
-      <label for="profile-pic" aria-label="Edit Icon">
+      <label htmlFor="profile-pic" aria-label="Edit Icon">
         <img src={editPen} alt="Edit Icon" />
       </label>
       <input
@@ -26,7 +26,12 @@ const Profile = ({ getImage }) => {
         onChange={getProfileImage}
         accept="image/*"
       />
-      <img class={styles.profilePic} src={value} alt="profile" height="160px" />
+      <img
+        className={styles.profilePic}
+        src={value}
+        alt="profile"
+        height="160px"
+      />
     </div>
   );
 };

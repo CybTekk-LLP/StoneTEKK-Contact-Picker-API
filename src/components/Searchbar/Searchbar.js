@@ -35,7 +35,7 @@ const Searchbar = ({ onSearch }) => {
       <input
         id="search"
         className={styles.inputSearch}
-        tabIndex={1}
+        tabIndex={0}
         type="search"
         value={value}
         placeholder="Search Contacts"

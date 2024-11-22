@@ -9,6 +9,7 @@ const InputDefault = ({
   autoComplete,
   _inputMode,
   handleValue,
+  index,
 }) => {
   const [value, setValue] = useState();
 
@@ -20,7 +21,7 @@ const InputDefault = ({
 
   return (
     <div className={styles.customInput}>
-      <label className={styles.inputLabel}>
+      <label className={styles.inputLabel} htmlFor={"input" + type + index}>
         <Typography text={inputLabel} />
       </label>
       <input
@@ -31,6 +32,7 @@ const InputDefault = ({
         inputMode={_inputMode || "text"}
         value={value}
         onInput={handleInput}
+        id={"input" + type + index}
       />
     </div>
   );

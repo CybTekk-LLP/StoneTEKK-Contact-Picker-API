@@ -34,7 +34,7 @@ function App() {
       <Button
         text={"haha"}
         type={"secondary"}
-        textColor={"var(--correct)"}
+        textColor={"var(--correct-darker)"}
       ></Button>
       <Button text={"haha"} type={"primary"} textColor={"var(--card)"}></Button>
 
@@ -45,6 +45,7 @@ function App() {
         _inputMode="numeric"
         handleValue={handleInputValue}
         inputLabel={"name"}
+        index={1}
       />
       <p>{inputValue}</p>
 

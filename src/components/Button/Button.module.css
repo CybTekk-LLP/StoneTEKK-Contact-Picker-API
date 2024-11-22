@@ -23,14 +23,13 @@
 }
 
 .button.secondary {
-    color: var(--correct);
     background-color: var(--correct-translucent);
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 20px;
     border-color: var(--transparent);
-    opacity: 0.75;
+    opacity: 0.9;
 }
 
 .button.secondary:hover {

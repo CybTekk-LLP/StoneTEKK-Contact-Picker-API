@@ -21,14 +21,15 @@ body {
   --primary-active: #212121;
   --placeholder: #676767;
   --correct: #557ffe;
+  --correct-darker: #213e92;
   --lightcard: #f5f5f5;
   --card: #eeeeee;
   --hover: #7777773d;
   --main-background: #ffffff;
   --primary-light: #f3f3f3;
-  --danger: #d35252;
+  --danger: #c84b4c;
   --input: #d6d6d6;
-  --correct-translucent: #557ffe3d;
+  --correct-translucent: #557ffe1c;
   --outline: #666666cf;
   --transparent: transparent;
   --danger-translucent: #d3525232;
