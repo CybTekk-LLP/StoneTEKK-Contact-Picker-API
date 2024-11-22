@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Stonetekk Contact Picker App",
+  "name": "A Contact Picker API experimental app for StoneTEKK's stone industry management system to test the user experience and performance of sending order requests to multiple addresses at once.",
   "icons": [
     {
       "src": "favicon.ico",
