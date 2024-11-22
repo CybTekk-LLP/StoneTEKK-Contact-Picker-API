@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useCallback } from "react";
 import "./Searchbar.css";
 import searchIcon from "./../../images/Searchbar.svg";
 
@@ -11,8 +11,6 @@ function debounce(func, delay) {
 }
 
 function Searchbar({ onSearch }) {
-  const [value, setValue] = useState("");
-
   const debouncedSearch = useCallback(
     debounce((searchValue) => {
       onSearch(searchValue);
@@ -22,7 +20,6 @@ function Searchbar({ onSearch }) {
 
   const handleInputChange = (e) => {
     const inputValue = e.target.value;
-    setValue(inputValue);
     debouncedSearch(inputValue);
   };
 
