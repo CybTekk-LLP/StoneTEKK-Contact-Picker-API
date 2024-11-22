@@ -28,10 +28,11 @@ function Searchbar({ onSearch }) {
 
   return (
     <search className="searchbar">
-      <label className="search-label">
+      <label className="search-label" for="search">
         <img src={searchIcon} alt="Search icon" />
       </label>
       <input
+        id="search"
         className="input-search"
         tabIndex={1}
         type="search"
