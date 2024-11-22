@@ -1,0 +1,33 @@
+.context {
+    position: relative;
+    background-color: var(--main-background);
+    inline-size: max-content;
+    min-inline-size: 180px;
+    padding: 10px 20px;
+    line-height: 2;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+    display: flex;
+    flex-direction: column;
+}
+
+.context>button {
+    all: unset;
+    cursor: pointer;
+}
+
+.context>button:not(:last-of-type) {
+    border-block-end: 1px dashed var(--hover);
+}
+
+
+.context::after {
+    position: absolute;
+    content: '';
+    inset-block-start: -18px;
+    inset-inline-end: 15px;
+    block-size: 0;
+    inline-size: 0;
+    border: 10px solid var(--transparent);
+    border-block-end-color: var(--main-background);
+}

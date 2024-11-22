@@ -1,16 +1,17 @@
 import React from "react";
 import Typography from "../Typography/Typography";
+import styles from "./ContextMenu.module.css";
 
-const ContextMenu = (
+const ContextMenu = ({
   text,
   textDanger,
   textColor,
   textColorDanger,
   editContact,
-  deleteContact
-) => {
+  deleteContact,
+}) => {
   return (
-    <div>
+    <div className={styles.context}>
       <button onClick={editContact}>
         <Typography text={text} _color={textColor} type={"caption"}>
           {" "}

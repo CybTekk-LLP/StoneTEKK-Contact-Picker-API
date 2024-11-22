@@ -1,10 +1,11 @@
 import "./App.css";
-import Profile from "./components/Profile/Profile";
-import Searchbar from "./components/Searchbar/Searchbar";
 import { useState } from "react";
+import Searchbar from "./components/Searchbar/Searchbar";
+import Profile from "./components/Profile/Profile";
 import Typography from "./components/Typography/Typography";
 import InputDefault from "./components/InputDefault/InputDefault";
 import Button from "./components/Button/Button";
+import ContextMenu from "./components/ContextMenu/ContextMenu";
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
@@ -22,6 +23,9 @@ function App() {
   const handleSearch = (value) => {
     setSearchValue(value);
   };
+
+  const editContact = () => {};
+  const deleteContact = () => {};
   return (
     <>
       <Profile getImage={handleImageUrl}></Profile>
@@ -43,6 +47,15 @@ function App() {
         inputLabel={"name"}
       />
       <p>{inputValue}</p>
+
+      <ContextMenu
+        text="Edit Contact"
+        textDanger="Delete Contact"
+        textColor="var(--primary-900)"
+        textColorDanger="var(--danger)"
+        editContact={editContact}
+        deleteContact={deleteContact}
+      ></ContextMenu>
     </>
   );
 }
