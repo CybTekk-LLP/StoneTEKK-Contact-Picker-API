@@ -23,6 +23,7 @@ Using the **Contact Picker API**, the app enables dealers to:
 5. Send orders with just a few clicks, and automatically:
    - Clear retailer details from the app to maintain privacy.
    - Email retailers with their order details, including delivery name and address.
+   - Reduce friction for retailers not currently in the StoneTEKK ecosystem as well as increase the chances to onboard New retailers with every mail sent.
 
 This time-saving feature improves the dealer's workflow, providing a modernized approach to managing orders for retailers who are not yet onboarded onto Stonetekk.
 
@@ -31,6 +32,12 @@ This time-saving feature improves the dealer's workflow, providing a modernized 
 ## App UI
 
 ![Minimal UI](https://github.com/user-attachments/assets/324b2c1a-1d8f-4183-9133-818c6760c8ed)
+
+---
+
+## Email UI
+
+<img width="800" alt="Email UI" src="https://github.com/user-attachments/assets/425eb5f8-9b5c-4034-9c4e-23fd4045c8e5">
 
 ---
 
