@@ -1,0 +1,28 @@
+.profile-wrapper {
+    position: relative;
+    inline-size: 250px;
+}
+
+.profile-wrapper>label {
+    position: absolute;
+    inset-inline-end: 85px;
+    inset-block-end: 0;
+}
+
+.profile-wrapper>label>img {
+    image-rendering: optimizeSpeed;
+    translate: 10px 0;
+}
+
+.profile-wrapper>input[type='file'] {
+    display: none;
+}
+
+.profile-wrapper>img.profile-pic {
+    block-size: 160px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 50%;
+    image-rendering: optimizeSpeed;
+    background-color: var(--lightcard);
+}
