@@ -25,6 +25,12 @@ This time-saving feature improves the dealer's workflow, providing a modernized 
 
 ---
 
+## App UI
+
+![Minimal UI](https://github.com/user-attachments/assets/324b2c1a-1d8f-4183-9133-818c6760c8ed)
+
+---
+
 ## About the Contact Picker API
 
 The **Contact Picker API** is a modern web standard that allows users to select contacts from their device's address book directly within a web application.
