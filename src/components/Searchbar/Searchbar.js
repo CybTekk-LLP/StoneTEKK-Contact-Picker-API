@@ -1,9 +1,45 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
+import "./Searchbar.css";
+import searchIcon from "./../../images/Searchbar.svg";
 
-function Searchbar() {
+function debounce(func, delay) {
+  let timer;
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => func(...args), delay);
+  };
+}
+
+function Searchbar({ onSearch }) {
+  const [value, setValue] = useState("");
+
+  const debouncedSearch = useCallback(
+    debounce((searchValue) => {
+      onSearch(searchValue);
+    }, 1200),
+    [onSearch]
+  );
+
+  const handleInputChange = (e) => {
+    const inputValue = e.target.value;
+    setValue(inputValue);
+    debouncedSearch(inputValue);
+  };
+
   return (
-    <div>
-      <input type="search" placeholder="Search Contacts" />
+    <div className="searchbar">
+      <label className="search-label">
+        <img src={searchIcon} alt="Search icon" />
+      </label>
+      <input
+        className="input-search"
+        tabIndex={1}
+        type="search"
+        value={value}
+        placeholder="Search Contacts"
+        onInput={handleInputChange}
+        aria-label="Search Contacts"
+      />
     </div>
   );
 }

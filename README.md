@@ -42,7 +42,7 @@ The **Contact Picker API** is a modern web standard that allows users to select 
 
 - **Privacy-Focused**: Users grant explicit consent to share contact details, and the app cannot access the entire address book.
 - **Efficient**: Simplifies importing contact details, eliminating manual data entry.
-- **Compatibility**: Currently, the API is experimental and supported on select browsers (e.g., Chrome and Edge). Ensure your browser supports the API before use.
+- **Compatibility**: Currently, the API is experimental and supported only on Chrome in Android. Ensure your browser supports the API before use.
 
 ### Limitations:
 
