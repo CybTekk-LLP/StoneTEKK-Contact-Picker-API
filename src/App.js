@@ -4,6 +4,7 @@ import Searchbar from "./components/Searchbar/Searchbar";
 import { useState } from "react";
 import Typography from "./components/Typography/Typography";
 import InputDefault from "./components/InputDefault/InputDefault";
+import Button from "./components/Button/Button";
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
@@ -26,6 +27,12 @@ function App() {
       <Profile getImage={handleImageUrl}></Profile>
       <Searchbar onSearch={handleSearch} />
       <Typography text="assdgsdgsd" type="body" _fontweight={300} />
+      <Button
+        text={"haha"}
+        type={"secondary"}
+        textColor={"var(--correct)"}
+      ></Button>
+      <Typography text="assdgsdgsd" type="branding" _fontweight={300} />
       <p>{imgUrl}</p>
       <InputDefault
         type="number"

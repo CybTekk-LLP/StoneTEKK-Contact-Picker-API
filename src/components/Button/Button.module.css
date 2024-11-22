@@ -1,0 +1,23 @@
+.button {
+    inline-size: 100%;
+    block-size: 50px;
+    padding-block: 15px;
+    padding-inline: 20px;
+    border: 1px solid var(--primary-active);
+    border-radius: 10px;
+    background-color: var(--primary-active);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.button.secondary {
+    color: var(--correct);
+    background-color: var(--correct-translucent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    border-color: var(--transparent);
+}
