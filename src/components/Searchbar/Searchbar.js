@@ -28,7 +28,7 @@ function Searchbar({ onSearch }) {
 
   return (
     <search className="searchbar">
-      <label className="search-label" for="search">
+      <label className="search-label" htmlFor="search">
         <img src={searchIcon} alt="Search icon" />
       </label>
       <input

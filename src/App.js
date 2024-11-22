@@ -6,15 +6,21 @@ import Typography from "./components/Typography/Typography";
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
+  const [imgUrl, setImgUrl] = useState("");
+
+  const handleImageUrl = (img) => {
+    setImgUrl(img);
+  };
 
   const handleSearch = (value) => {
     setSearchValue(value);
   };
   return (
     <>
-    <Profile></Profile>
+      <Profile getImage={handleImageUrl}></Profile>
       <Searchbar onSearch={handleSearch} />
       <Typography text="assdgsdgsd" type="branding" _fontweight={300} />
+      <p>{imgUrl}</p>
     </>
   );
 }
