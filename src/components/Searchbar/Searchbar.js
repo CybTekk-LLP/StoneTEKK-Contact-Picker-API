@@ -27,7 +27,7 @@ function Searchbar({ onSearch }) {
   };
 
   return (
-    <div className="searchbar">
+    <search className="searchbar">
       <label className="search-label">
         <img src={searchIcon} alt="Search icon" />
       </label>
@@ -40,7 +40,7 @@ function Searchbar({ onSearch }) {
         onInput={handleInputChange}
         aria-label="Search Contacts"
       />
-    </div>
+    </search>
   );
 }
 
