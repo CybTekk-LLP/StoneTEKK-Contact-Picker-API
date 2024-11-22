@@ -1,6 +1,7 @@
 import "./App.css";
 import Searchbar from "./components/Searchbar/Searchbar";
 import { useState } from "react";
+import Typography from "./components/Typography/Typography";
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
@@ -11,6 +12,7 @@ function App() {
   return (
     <>
       <Searchbar onSearch={handleSearch} />
+      <Typography text="assdgsdgsd" type="branding" _fontweight={300} />
     </>
   );
 }
