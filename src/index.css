@@ -21,7 +21,7 @@ body {
   --primary-active: #212121;
   --placeholder: #676767;
   --correct: #557ffe;
-  --correct-darker: #213e92;
+  --correct-darker: rgba(54, 79, 153, 0.94);
   --lightcard: #f5f5f5;
   --card: #eeeeee;
   --hover: #7777773d;
@@ -29,7 +29,7 @@ body {
   --primary-light: #f3f3f3;
   --danger: #c84b4c;
   --input: #d6d6d6;
-  --correct-translucent: #557ffe3d;
+  --correct-translucent: #557ffe1f;
   --outline: #666666cf;
   --transparent: transparent;
   --danger-translucent: #d3525232;

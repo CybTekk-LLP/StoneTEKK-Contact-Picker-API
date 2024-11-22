@@ -6,6 +6,8 @@ import Typography from "./components/Typography/Typography";
 import InputDefault from "./components/InputDefault/InputDefault";
 import Button from "./components/Button/Button";
 import ContextMenu from "./components/ContextMenu/ContextMenu";
+import Anchor from "./components/Anchor/Anchor";
+import Toast from "./components/Toast/Toast";
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
@@ -41,11 +43,13 @@ function App() {
       <Typography text="assdgsdgsd" type="branding" _fontweight={300} />
       <p>{imgUrl}</p>
       <InputDefault
-        type="number"
-        _inputMode="numeric"
+        type="text"
+        _inputMode="text"
         handleValue={handleInputValue}
         inputLabel={"name"}
         index={1}
+        autoComplete={"name"}
+        placeholder={"john"}
       />
       <p>{inputValue}</p>
 
@@ -57,6 +61,13 @@ function App() {
         editContact={editContact}
         deleteContact={deleteContact}
       ></ContextMenu>
+
+      <Anchor href={"https://stonetekk.in"} text="StoneTEKK.in"></Anchor>
+      <Toast
+        title={"Mail sent"}
+        description={"Retailers have been notified of the order"}
+        type={"success"}
+      ></Toast>
     </>
   );
 }

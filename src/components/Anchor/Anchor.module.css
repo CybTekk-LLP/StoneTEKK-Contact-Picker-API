@@ -1,0 +1,5 @@
+.anchor {
+    text-decoration-color: var(--correct);
+    text-underline-offset: 3px;
+    text-decoration-line: underline;
+}
