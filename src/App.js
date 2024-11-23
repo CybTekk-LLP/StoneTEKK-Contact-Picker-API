@@ -12,6 +12,9 @@ import Select from "./components/Select/Select";
 import Card from "./components/Card/Card";
 import EmptyState from "./components/EmptyState/EmptyState";
 import Footer from "./components/Footer/Footer";
+import AddDetails from "./components/AddDetails/AddDetails";
+import store from "./store/store";
+import { Provider } from "react-redux";
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
@@ -34,88 +37,15 @@ function App() {
   const deleteContact = () => {};
   return (
     <>
-      <Typography text="Add Details" type="title" _fontweight={700} />
-      <Typography
-        text="Adding Retailer outside of StoneTEKK"
-        type="body"
-        _fontweight={300}
-      />
-      <Profile getImage={handleImageUrl}></Profile>
-      <InputDefault
-        type="text"
-        _inputMode="text"
-        handleValue={handleInputValue}
-        inputLabel="Name"
-        index={1}
-        autoComplete="name"
-        placeholder="e.g. Jon Doe"
-      />
+    <Provider store={store}>
+    <AddDetails/>
+    </Provider>
 
-      <InputDefault
-        type="email"
-        _inputMode="email"
-        handleValue={handleInputValue}
-        inputLabel="Email"
-        index={2}
-        autoComplete="email"
-        placeholder="e.g. abc@example.com"
-      />
-
-      <InputDefault
-        type="tel"
-        _inputMode="tel"
-        handleValue={handleInputValue}
-        inputLabel="Mobile Number"
-        index={3}
-        autoComplete="tel"
-        placeholder="e.g. +1 1234 5678 90"
-      />
-
-      <InputDefault
-        type="text"
-        _inputMode="numeric"
-        handleValue={handleInputValue}
-        inputLabel="House No."
-        index={4}
-        autoComplete="address-line1"
-        placeholder="e.g. 123"
-      />
-
-      <InputDefault
-        type="text"
-        _inputMode="text"
-        handleValue={handleInputValue}
-        inputLabel="Street Name"
-        index={5}
-        autoComplete="street-address"
-        placeholder="e.g. abc road"
-      />
-
-      <InputDefault
-        type="text"
-        _inputMode="numeric"
-        handleValue={handleInputValue}
-        inputLabel="Zipcode"
-        index={6}
-        autoComplete="postal-code"
-        placeholder="e.g. 11111"
-      />
-
-      <InputDefault
-        type="text"
-        _inputMode="text"
-        handleValue={handleInputValue}
-        inputLabel="City"
-        index={7}
-        autoComplete="address-level2"
-        placeholder="e.g. New York"
-      />
-
-      <Footer
+      {/* <Footer
         text={"Experimental Feature for"}
         url={"https://stonetekk.in"}
         link={"StoneTEKK.in"}
-      ></Footer>
+      ></Footer> */}
 
       {/* <Profile getImage={handleImageUrl}></Profile>
       <Searchbar onSearch={handleSearch} />
