@@ -11,6 +11,7 @@ import Toast from "./components/Toast/Toast";
 import Select from "./components/Select/Select";
 import Card from "./components/Card/Card";
 import EmptyState from "./components/EmptyState/EmptyState";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
@@ -110,6 +111,12 @@ function App() {
         placeholder="e.g. New York"
       />
 
+      <Footer
+        text={"Experimental Feature for"}
+        url={"https://stonetekk.in"}
+        link={"StoneTEKK.in"}
+      ></Footer>
+
       {/* <Profile getImage={handleImageUrl}></Profile>
       <Searchbar onSearch={handleSearch} />
       <Typography text="assdgsdgsd" type="body" _fontweight={300} />
@@ -142,7 +149,6 @@ function App() {
         deleteContact={deleteContact}
       ></ContextMenu>
 
-      <Anchor href={"https://stonetekk.in"} text="StoneTEKK.in"></Anchor>
       <Toast
         title={"Mail sent"}
         description={"Retailers have been notified of their orders."}
