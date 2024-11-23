@@ -6,6 +6,7 @@ import Searchbar from "../Searchbar/Searchbar";
 import Button from "../Button/Button";
 import { useDispatch } from "react-redux";
 import { add } from "./../../store/contactDetailSlice";
+import Card from "../Card/Card";
 import styles from "./AddContacts.module.css";
 import EmptyState from "../EmptyState/EmptyState";
 
@@ -57,6 +58,44 @@ function AddContacts({ handleSearch }) {
         type={"secondary"}
         textColor={"var(--correct-darker)"}
       ></Button>
+      <div className={styles.cards}>
+        <Card
+          src="https://picsum.photos/600"
+          name={"Ramesh Gupta"}
+          tel={"49172330 29581"}
+          address={"$38 K/123 Triveel Nager sitapur rood lucknow"}
+        ></Card>
+        <Card
+          src="https://picsum.photos/600"
+          name={"Ramesh Gupta"}
+          tel={"49172330 29581"}
+          address={"$38 K/123 Triveel Nager sitapur rood lucknow"}
+        ></Card>
+        <Card
+          src="https://picsum.photos/600"
+          name={"Ramesh Gupta"}
+          tel={"49172330 29581"}
+          address={"$38 K/123 Triveel Nager sitapur rood lucknow"}
+        ></Card>
+        <Card
+          src="https://picsum.photos/600"
+          name={"Ramesh Gupta"}
+          tel={"49172330 29581"}
+          address={"$38 K/123 Triveel Nager sitapur rood lucknow"}
+        ></Card>
+        <Card
+          src="https://picsum.photos/600"
+          name={"Ramesh Gupta"}
+          tel={"49172330 29581"}
+          address={"$38 K/123 Triveel Nager sitapur rood lucknow"}
+        ></Card>
+        <Card
+          src="https://picsum.photos/600"
+          name={"Ramesh Gupta"}
+          tel={"49172330 29581"}
+          address={"$38 K/123 Triveel Nager sitapur rood lucknow"}
+        ></Card>
+      </div>
       <div className={styles.emptyState}>
         <EmptyState></EmptyState>
       </div>

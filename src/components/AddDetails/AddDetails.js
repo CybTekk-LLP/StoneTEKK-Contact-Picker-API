@@ -82,7 +82,7 @@ const AddDetails = () => {
         type="email"
         _inputMode="email"
         handleValue={handleEmail}
-        inputLabel="Email"
+        inputLabel="Email* (Required)"
         index={2}
         autoComplete="email"
         placeholder="e.g. abc@example.com"

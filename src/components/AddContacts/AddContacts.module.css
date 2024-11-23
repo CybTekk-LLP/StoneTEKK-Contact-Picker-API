@@ -14,3 +14,10 @@
 .emptyState {
     margin-block: 60px;
 }
+
+.cards {
+    margin-block: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}

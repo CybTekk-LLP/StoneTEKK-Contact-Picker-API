@@ -1,24 +1,25 @@
 .profileWrapper {
   position: relative;
   inline-size: 250px;
+  text-align: center;
 }
 
-.profileWrapper > label {
+.profileWrapper>label {
   position: absolute;
   inset-inline-end: 85px;
   inset-block-end: 0;
 }
 
-.profileWrapper > label > img {
+.profileWrapper>label>img {
   image-rendering: optimizeSpeed;
-  translate: 10px 0;
+  translate: 40px 0;
 }
 
-.profileWrapper > input[type="file"] {
+.profileWrapper>input[type="file"] {
   display: none;
 }
 
-.profileWrapper > img.profilePic {
+.profileWrapper>img.profilePic {
   block-size: 160px;
   aspect-ratio: 1/1;
   object-fit: cover;
