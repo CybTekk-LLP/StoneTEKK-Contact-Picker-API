@@ -17,9 +17,7 @@
     position: absolute;
     inset-block-start: calc(100% + 5px);
     inset-inline-start: 0;
-    background-color: color-mix(in srgb, var(--lightcard) 50%, var(--transparent) 50%);
-    -webkit-backdrop-filter: blur(50px);
-    backdrop-filter: blur(50px);
+    background-color: var(--lightcard);
     border-radius: 8px;
     z-index: 1;
     display: none;
