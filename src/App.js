@@ -8,6 +8,7 @@ import Button from "./components/Button/Button";
 import ContextMenu from "./components/ContextMenu/ContextMenu";
 import Anchor from "./components/Anchor/Anchor";
 import Toast from "./components/Toast/Toast";
+import Select from "./components/Select/Select";
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
@@ -68,6 +69,7 @@ function App() {
         description={"Retailers have been notified of their orders."}
         type={"success"}
       ></Toast>
+      <Select text={"Please select one"} option={"one"}></Select>
     </>
   );
 }
