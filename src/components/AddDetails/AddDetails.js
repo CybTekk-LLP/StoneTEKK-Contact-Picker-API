@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { add } from "./../../store/contactDetailSlice";
 import styles from "./AddDetails.module.css";
 
-function AddDetails() {
+const AddDetails = () => {
   const [userDetails, setUserDetails] = useState({});
   const dispatch = useDispatch();
 
@@ -53,6 +53,8 @@ function AddDetails() {
 
   return (
     <form onSubmit={handleSubmit} className={styles.detailForm}>
+      <br />
+      <br />
       <Typography text="Add Details" type="title" _fontweight={700} />
       <Typography
         text="Adding Retailer outside of StoneTEKK"
@@ -150,6 +152,6 @@ function AddDetails() {
       <br />
     </form>
   );
-}
+};
 
 export default AddDetails;

@@ -2,12 +2,19 @@ import React, { useState } from "react";
 import Typography from "../Typography/Typography";
 import styles from "./Select.module.css";
 
-const Select = ({ text, option, toggleDropdown }) => {
+const Select = ({ text, options, onSelect, toggleDropdown }) => {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(text);
 
   const handleDropdownToggle = () => {
     setIsDropdownVisible(!isDropdownVisible);
     toggleDropdown && toggleDropdown();
+  };
+
+  const handleOptionSelect = (option) => {
+    setSelectedOption(option);
+    onSelect && onSelect(option);
+    setIsDropdownVisible(false);
   };
 
   return (
@@ -18,7 +25,11 @@ const Select = ({ text, option, toggleDropdown }) => {
       tabIndex="0"
     >
       <div className={styles.selectedOption}>
-        <Typography text={text} _color="var(--primary-dark)" type={"body"} />
+        <Typography
+          text={selectedOption}
+          _color="var(--primary-dark)"
+          type={"body"}
+        />
       </div>
       <div className={styles.dropdownArrow}>
         <svg
@@ -48,41 +59,19 @@ const Select = ({ text, option, toggleDropdown }) => {
           isDropdownVisible ? styles.show : ""
         }`}
       >
-        <div className={styles.dropdownMenuItem}>
-          <Typography
-            text={option}
-            _color="var(--primary-dark)"
-            type={"body"}
-          />
-        </div>
-        <div className={styles.dropdownMenuItem}>
-          <Typography
-            text={option}
-            _color="var(--primary-dark)"
-            type={"body"}
-          />
-        </div>
-        <div className={styles.dropdownMenuItem}>
-          <Typography
-            text={option}
-            _color="var(--primary-dark)"
-            type={"body"}
-          />
-        </div>
-        <div className={styles.dropdownMenuItem}>
-          <Typography
-            text={option}
-            _color="var(--primary-dark)"
-            type={"body"}
-          />
-        </div>
-        <div className={styles.dropdownMenuItem}>
-          <Typography
-            text={option}
-            _color="var(--primary-dark)"
-            type={"body"}
-          />
-        </div>
+        {options.map((option, index) => (
+          <div
+            key={index}
+            className={styles.dropdownMenuItem}
+            onClick={() => handleOptionSelect(option)}
+          >
+            <Typography
+              text={option}
+              _color="var(--primary-dark)"
+              type={"body"}
+            />
+          </div>
+        ))}
       </div>
     </div>
   );

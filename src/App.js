@@ -8,11 +8,12 @@ import Button from "./components/Button/Button";
 import ContextMenu from "./components/ContextMenu/ContextMenu";
 import Anchor from "./components/Anchor/Anchor";
 import Toast from "./components/Toast/Toast";
-import Select from "./components/Select/Select";
 import Card from "./components/Card/Card";
 import EmptyState from "./components/EmptyState/EmptyState";
 import Footer from "./components/Footer/Footer";
 import AddDetails from "./components/AddDetails/AddDetails";
+import AddContacts from "./components/AddContacts/AddContacts";
+
 import store from "./store/store";
 import { Provider } from "react-redux";
 
@@ -37,15 +38,16 @@ function App() {
   const deleteContact = () => {};
   return (
     <>
-    <Provider store={store}>
-    <AddDetails/>
-    </Provider>
-
-      {/* <Footer
+      {/* <Provider store={store}>
+        <AddDetails />
+      </Provider> */}
+      <AddContacts></AddContacts>
+      <Footer
         text={"Experimental Feature for"}
         url={"https://stonetekk.in"}
         link={"StoneTEKK.in"}
-      ></Footer> */}
+      ></Footer>
+      {/*  */}
 
       {/* <Profile getImage={handleImageUrl}></Profile>
       <Searchbar onSearch={handleSearch} />
@@ -84,7 +86,6 @@ function App() {
         description={"Retailers have been notified of their orders."}
         type={"success"}
       ></Toast>
-      <Select text={"Please select one"} option={"one"}></Select>
       <Card
         src="https://picsum.photos/600"
         name={"Ramesh Gupta"}

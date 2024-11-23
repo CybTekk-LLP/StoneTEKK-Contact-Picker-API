@@ -1,4 +1,4 @@
-.detailForm {
+.main {
     inline-size: 100%;
     max-inline-size: 800px;
     margin-inline: auto;
@@ -6,8 +6,11 @@
     padding-block: 20px;
 }
 
-
-.profile {
+.sortWrapper {
     display: flex;
-    justify-content: center;
+    gap: 10px;
+}
+
+.emptyState {
+    margin-block: 60px;
 }
