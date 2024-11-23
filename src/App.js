@@ -10,6 +10,7 @@ import Anchor from "./components/Anchor/Anchor";
 import Toast from "./components/Toast/Toast";
 import Select from "./components/Select/Select";
 import Card from "./components/Card/Card";
+import EmptyState from "./components/EmptyState/EmptyState";
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
@@ -77,6 +78,7 @@ function App() {
         tel={"49172330 29581"}
         address={"$38 K/123 Triveel Nager sitapur rood lucknow"}
       ></Card>
+      <EmptyState text="Add members via filling form or using contact picker if supported"></EmptyState>
       <br></br>
       <br></br>
       <br></br>
