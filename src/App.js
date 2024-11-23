@@ -9,6 +9,7 @@ import ContextMenu from "./components/ContextMenu/ContextMenu";
 import Anchor from "./components/Anchor/Anchor";
 import Toast from "./components/Toast/Toast";
 import Select from "./components/Select/Select";
+import Card from "./components/Card/Card";
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
@@ -70,6 +71,16 @@ function App() {
         type={"success"}
       ></Toast>
       <Select text={"Please select one"} option={"one"}></Select>
+      <Card
+        src="https://picsum.photos/600"
+        name={"Ramesh Gupta"}
+        tel={"49172330 29581"}
+        address={"$38 K/123 Triveel Nager sitapur rood lucknow"}
+      ></Card>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
     </>
   );
 }

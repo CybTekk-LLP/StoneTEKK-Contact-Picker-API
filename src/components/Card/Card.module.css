@@ -1,0 +1,31 @@
+.card {
+    position: relative;
+    inline-size: 100%;
+    block-size: 100%;
+    border-radius: 12px;
+    box-shadow: var(--box-shadow);
+    padding-block-end: 20px;
+}
+
+.card>img {
+    inline-size: 100%;
+    block-size: 200px;
+    border-radius: 12px 12px 0 0;
+}
+
+
+.card>button {
+    all: unset;
+    cursor: pointer;
+    position: absolute;
+    padding: 10px;
+    inset-inline-end: 5px;
+    inset-block-end: 5px;
+}
+
+.card>div {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
