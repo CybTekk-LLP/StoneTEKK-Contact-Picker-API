@@ -5,40 +5,40 @@ import InputDefault from "../InputDefault/InputDefault";
 import Button from "../Button/Button";
 import { useDispatch } from "react-redux";
 import { add } from "./../../store/contactDetailSlice";
-import styles from "./AddDetails.module.css"
+import styles from "./AddDetails.module.css";
 
 function AddDetails() {
   const [userDetails, setUserDetails] = useState({});
   const dispatch = useDispatch();
 
   const handleName = (value) => {
-    setUserDetails((prevDetails) => ({...prevDetails, name: value}))
-  }
+    setUserDetails((prevDetails) => ({ ...prevDetails, name: value }));
+  };
 
- const handleEmail = (value) => {
-    setUserDetails((prevDetails) => ({...prevDetails, email: value}))
- }
+  const handleEmail = (value) => {
+    setUserDetails((prevDetails) => ({ ...prevDetails, email: value }));
+  };
 
- const handlePhoneNumber = (value) => {
-    setUserDetails((prevDetails) => ({...prevDetails, phoneNumber: value}))
- }
+  const handlePhoneNumber = (value) => {
+    setUserDetails((prevDetails) => ({ ...prevDetails, phoneNumber: value }));
+  };
 
- const handleStreetName = (value) => {
-    setUserDetails((prevDetails) => ({...prevDetails, streetName: value}))
- }
+  const handleStreetName = (value) => {
+    setUserDetails((prevDetails) => ({ ...prevDetails, streetName: value }));
+  };
 
- const handleCityName = (value) => {
-    setUserDetails((prevDetails)=> ({...prevDetails, city: value}))
- }
+  const handleCityName = (value) => {
+    setUserDetails((prevDetails) => ({ ...prevDetails, city: value }));
+  };
 
- const handleHouseNo = (value) => {
-    setUserDetails((prevDetails)=> ({...prevDetails, houseNo: value}))
- }
+  const handleHouseNo = (value) => {
+    setUserDetails((prevDetails) => ({ ...prevDetails, houseNo: value }));
+  };
 
- const handleZipCode = (value) => {
-    setUserDetails((prevDetails)=> ({...prevDetails, zipCode: value}))
- }
- 
+  const handleZipCode = (value) => {
+    setUserDetails((prevDetails) => ({ ...prevDetails, zipCode: value }));
+  };
+
   const handleImageUrl = (imageUrl) => {
     setUserDetails((prevDetails) => ({
       ...prevDetails,
@@ -46,10 +46,9 @@ function AddDetails() {
     }));
   };
 
-
   const handleSubmit = (e) => {
-    e.preventDefault(); 
-    dispatch(add(userDetails)); 
+    e.preventDefault();
+    dispatch(add(userDetails));
   };
 
   return (
@@ -59,12 +58,14 @@ function AddDetails() {
         text="Adding Retailer outside of StoneTEKK"
         type="body"
         _fontweight={300}
-        />
-        <br/><br/>
-    <div className={styles.profile}>
-      <Profile getImage={handleImageUrl} />
-    </div>   
-      <br/><br/>
+      />
+      <br />
+      <br />
+      <div className={styles.profile}>
+        <Profile getImage={handleImageUrl} />
+      </div>
+      <br />
+      <br />
       <InputDefault
         type="text"
         _inputMode="text"
@@ -74,7 +75,7 @@ function AddDetails() {
         autoComplete="name"
         placeholder="e.g. Jon Doe"
       />
-    <br/>
+      <br />
       <InputDefault
         type="email"
         _inputMode="email"
@@ -84,7 +85,7 @@ function AddDetails() {
         autoComplete="email"
         placeholder="e.g. abc@example.com"
       />
-    <br/>
+      <br />
       <InputDefault
         type="tel"
         _inputMode="tel"
@@ -94,7 +95,7 @@ function AddDetails() {
         autoComplete="tel"
         placeholder="e.g. +1 1234 5678 90"
       />
-    <br/>
+      <br />
       <InputDefault
         type="text"
         _inputMode="numeric"
@@ -104,7 +105,7 @@ function AddDetails() {
         autoComplete="address-line1"
         placeholder="e.g. 123"
       />
-    <br/>
+      <br />
       <InputDefault
         type="text"
         _inputMode="text"
@@ -114,7 +115,7 @@ function AddDetails() {
         autoComplete="street-address"
         placeholder="e.g. abc road"
       />
-    <br/>
+      <br />
       <InputDefault
         type="text"
         _inputMode="numeric"
@@ -124,7 +125,7 @@ function AddDetails() {
         autoComplete="postal-code"
         placeholder="e.g. 11111"
       />
-    <br/>
+      <br />
       <InputDefault
         type="text"
         _inputMode="text"
@@ -134,11 +135,11 @@ function AddDetails() {
         autoComplete="address-level2"
         placeholder="e.g. New York"
       />
-    <br/>
+      <br />
       <Button
-        text={"haha"}
+        text={"Looks Good"}
         type={"primary"}
-        textColor={"var(--correct-darker)"}
+        textColor={"var(--primary-light)"}
         _btnType={"submit"}
       ></Button>
     </form>
