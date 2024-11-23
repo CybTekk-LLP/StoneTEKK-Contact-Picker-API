@@ -9,9 +9,12 @@ import { add } from "./../../store/contactDetailSlice";
 import Card from "../Card/Card";
 import styles from "./AddContacts.module.css";
 import EmptyState from "../EmptyState/EmptyState";
+import defaultProfilePic from "./../../images/DefaultProfilePic.svg";
 
 function AddContacts({ handleSearch }) {
   const [selectedOption, setSelectedOption] = useState("All Contacts");
+  const [selectedContacts, setSelectedContacts] = useState([]);
+
   const options = [
     "All Contacts",
     "Newest First",
@@ -23,6 +26,34 @@ function AddContacts({ handleSearch }) {
   const handleSelect = (option) => {
     setSelectedOption(option);
     // Perform sorting or other logic here
+  };
+
+  const handleAddContacts = async () => {
+    try {
+      const contacts = await navigator.contacts.select([
+        "name",
+        "email",
+        "tel",
+        "address",
+      ]);
+
+      if (contacts.length > 0) {
+        const formattedContacts = contacts.map((contact) => ({
+          avatar: contact.photo ? contact.photo.url : defaultProfilePic,
+          name: contact.name,
+          email: contact.email,
+          mobileNo: contact.tel,
+          houseNo: contact.address?.house || "",
+          streetName: contact.address?.street || "",
+          zipCode: contact.address?.postalCode || "",
+          city: contact.address?.city || "",
+        }));
+
+        setSelectedContacts(formattedContacts);
+      }
+    } catch (error) {
+      console.error("Error selecting contacts:", error);
+    }
   };
 
   return (
@@ -57,48 +88,27 @@ function AddContacts({ handleSearch }) {
         text={"Add Contacts to Send Order"}
         type={"secondary"}
         textColor={"var(--correct-darker)"}
+        onClick={handleAddContacts}
       ></Button>
-      <div className={styles.cards}>
-        <Card
-          src="https://picsum.photos/600"
-          name={"Ramesh Gupta"}
-          tel={"49172330 29581"}
-          address={"$38 K/123 Triveel Nager sitapur rood lucknow"}
-        ></Card>
-        <Card
-          src="https://picsum.photos/600"
-          name={"Ramesh Gupta"}
-          tel={"49172330 29581"}
-          address={"$38 K/123 Triveel Nager sitapur rood lucknow"}
-        ></Card>
-        <Card
-          src="https://picsum.photos/600"
-          name={"Ramesh Gupta"}
-          tel={"49172330 29581"}
-          address={"$38 K/123 Triveel Nager sitapur rood lucknow"}
-        ></Card>
-        <Card
-          src="https://picsum.photos/600"
-          name={"Ramesh Gupta"}
-          tel={"49172330 29581"}
-          address={"$38 K/123 Triveel Nager sitapur rood lucknow"}
-        ></Card>
-        <Card
-          src="https://picsum.photos/600"
-          name={"Ramesh Gupta"}
-          tel={"49172330 29581"}
-          address={"$38 K/123 Triveel Nager sitapur rood lucknow"}
-        ></Card>
-        <Card
-          src="https://picsum.photos/600"
-          name={"Ramesh Gupta"}
-          tel={"49172330 29581"}
-          address={"$38 K/123 Triveel Nager sitapur rood lucknow"}
-        ></Card>
-      </div>
-      <div className={styles.emptyState}>
-        <EmptyState></EmptyState>
-      </div>
+
+      {selectedContacts.length > 0 ? (
+        <div className={styles.cards}>
+          {selectedContacts.map((contact, index) => (
+            <Card
+              key={index}
+              src={contact.avatar}
+              name={contact.name}
+              tel={contact.mobileNo}
+              address={`${contact.houseNo} ${contact.streetName}, ${contact.city} ${contact.zipCode}`}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className={styles.emptyState}>
+          <EmptyState />
+        </div>
+      )}
+
       <Typography
         text="Note: We have skipped the order page where the same order to be sent to multiple recipients is selected (e.g. X units of Italian Marbles)"
         type="body"
@@ -111,6 +121,10 @@ function AddContacts({ handleSearch }) {
         textColor={"var(--primary-light)"}
         _btnType={"submit"}
       ></Button>
+      <br />
+      <br />
+      <br />
+      <br />
     </main>
   );
 }
