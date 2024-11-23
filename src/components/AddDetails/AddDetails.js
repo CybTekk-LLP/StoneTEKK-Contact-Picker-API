@@ -136,12 +136,18 @@ function AddDetails() {
         placeholder="e.g. New York"
       />
       <br />
+      <br />
+      <br />
       <Button
         text={"Looks Good"}
         type={"primary"}
         textColor={"var(--primary-light)"}
         _btnType={"submit"}
       ></Button>
+      <br />
+      <br />
+      <br />
+      <br />
     </form>
   );
 }
