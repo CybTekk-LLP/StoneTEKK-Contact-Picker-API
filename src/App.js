@@ -65,7 +65,7 @@ function App() {
       <Anchor href={"https://stonetekk.in"} text="StoneTEKK.in"></Anchor>
       <Toast
         title={"Mail sent"}
-        description={"Retailers have been notified of the order"}
+        description={"Retailers have been notified of their orders."}
         type={"success"}
       ></Toast>
     </>

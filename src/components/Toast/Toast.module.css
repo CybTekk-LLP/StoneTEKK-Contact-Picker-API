@@ -1,1 +1,68 @@
-.toast {}
+.toast {
+    position: fixed;
+    inset-inline-end: 10px;
+    inset-block-end: 30px;
+    z-index: 3;
+    max-inline-size: 378px;
+    inline-size: 100%;
+    block-size: 90px;
+    background-color: var(--main-background);
+    box-shadow: var(--box-shadow);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 16px;
+    -webkit-animation: toast 250ms ease both;
+    -moz-animation: toast 250ms ease both;
+    -o-animation: toast 250ms ease both;
+    animation: toast 250ms ease both;
+
+    @keyframes toast {
+        0% {
+            translate: 100% 0;
+        }
+
+        100% {
+            translate: 0 0;
+        }
+    }
+}
+
+.toast.out {
+    -webkit-animation: toastOut 250ms ease both;
+    -moz-animation: toastOut 250ms ease both;
+    -o-animation: toastOut 250ms ease both;
+    animation: toastOut 250ms ease both;
+}
+
+@keyframes toastOut {
+    0% {
+        translate: 0 0;
+    }
+
+    100% {
+        translate: 100% 0;
+    }
+}
+
+.toast>img {
+    image-rendering: optimizeSpeed;
+}
+
+.toast>button {
+    all: unset;
+    cursor: pointer;
+    position: absolute;
+    inset-inline-end: 10px;
+    inset-block-start: 10px;
+    z-index: 3;
+}
+
+.toast>div {
+    position: relative;
+    z-index: 3;
+    inline-size: 290px;
+    margin-inline: auto;
+}
