@@ -41,16 +41,22 @@ function AddContacts({ handleSearch }) {
       else navigate("/details");
 
       if (contacts.length > 0) {
-        const formattedContacts = contacts.map((contact) => ({
-          avatar: contact.photo ? contact.photo.url : defaultProfilePic,
-          name: contact.name,
-          email: contact.email,
-          mobileNo: contact.tel,
-          houseNo: contact.address?.house || "",
-          streetName: contact.address?.street || "",
-          zipCode: contact.address?.postalCode || "",
-          city: contact.address?.city || "",
-        }));
+        const formattedContacts = contacts.reduce((acc, contact) => {
+          // Use email as the key
+          const email = contact.email || "no-email"; // Fallback if email is missing
+          acc[email] = {
+            avatar: contact.photo ? contact.photo.url : defaultProfilePic,
+            name: contact.name,
+            email: contact.email,
+            mobileNo: contact.tel,
+            houseNo: contact.address?.house || "",
+            streetName: contact.address?.street || "",
+            zipCode: contact.address?.postalCode || "",
+            city: contact.address?.city || "",
+          };
+          return acc;
+        }, {});
+
         console.log(formattedContacts);
         // Use formatted contacts
         setSelectedContacts(formattedContacts);
@@ -95,17 +101,21 @@ function AddContacts({ handleSearch }) {
         handleClick={handleAddContacts}
       ></Button>
 
-      {selectedContacts.length > 0 ? (
+      {Object.keys(selectedContacts).length > 0 ? (
         <div className={styles.cards}>
-          {selectedContacts.map((contact, index) => (
-            <Card
-              key={index}
-              src={contact.avatar}
-              name={contact.name}
-              tel={contact.mobileNo}
-              address={`${contact.houseNo} ${contact.streetName}, ${contact.city} ${contact.zipCode}`}
-            />
-          ))}
+          {Object.keys(selectedContacts).map((email, index) => {
+            const contact = selectedContacts[email];
+
+            return (
+              <Card
+                key={email}
+                src={contact.avatar}
+                name={contact.name}
+                tel={contact.mobileNo}
+                address={`${contact.houseNo} ${contact.streetName}, ${contact.city} ${contact.zipCode}`}
+              />
+            );
+          })}
         </div>
       ) : (
         <div className={styles.emptyState}>
