@@ -18,6 +18,7 @@ function AddContacts({ handleSearch }) {
   const navigate = useNavigate();
 
   const contactData = useSelector((state) => state.contactData); // This is the data from store we are getting
+  console.log(contactData);
 
   const options = [
     "All Contacts",
