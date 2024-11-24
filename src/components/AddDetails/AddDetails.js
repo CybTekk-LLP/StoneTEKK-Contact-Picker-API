@@ -57,9 +57,31 @@ const AddDetails = () => {
     }));
   };
 
+  const saveContactToLocalStorage = (contact) => {
+    const storedContacts = localStorage.getItem("contacts");
+    let contacts = storedContacts ? JSON.parse(storedContacts) : {};
+
+    const email = contact.email || "no-email";
+    contacts[email] = {
+      avatar: contact.avatar || "",
+      name: contact.name,
+      email: contact.email,
+      mobileNo: contact.mobileNo,
+      houseNo: contact.houseNo,
+      streetName: contact.streetName,
+      zipCode: contact.zipCode,
+      city: contact.city,
+    };
+
+    localStorage.setItem("contacts", JSON.stringify(contacts));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(add(userDetails));
+
+    saveContactToLocalStorage(userDetails);
+
     navigate("/");
   };
 

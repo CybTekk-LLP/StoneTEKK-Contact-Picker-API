@@ -13,10 +13,10 @@ import ContextMenu from "../ContextMenu/ContextMenu";
 
 function AddContacts() {
   const [selectedOption, setSelectedOption] = useState("All Contacts");
-  const [selectedContacts, setSelectedContacts] = useState([]);
+  const [selectedContacts, setSelectedContacts] = useState({});
   const [contacts, setContacts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [emailId, setEmilID] = useState("");
+  const [emailId, setEmail] = useState("");
   const navigate = useNavigate();
 
   const contactData = useSelector((state) => state.contactData);
@@ -34,42 +34,53 @@ function AddContacts() {
   const handleSelect = (option) => {
     setSelectedOption(option);
   };
+
   const handleSearch = (query) => {
     setSearchQuery(query);
   };
 
   const handleAddContacts = async () => {
     try {
-      if ("contacts" in navigator)
-        setContacts([
-          await navigator.contacts.select(["name", "email", "tel", "address"]),
+      if ("contacts" in navigator) {
+        const newContacts = await navigator.contacts.select([
+          "name",
+          "email",
+          "tel",
+          "address",
         ]);
-      else navigate("/details");
-
-      if (contacts.length > 0) {
-        const formattedContacts = contacts.reduce((acc, contact) => {
-          const email = contact.email || "no-email";
-          acc[email] = {
-            avatar: contact.photo ? contact.photo.url : defaultProfilePic,
-            name: contact.name,
-            email: contact.email,
-            mobileNo: contact.tel,
-            houseNo: contact.address?.house || "",
-            streetName: contact.address?.street || "",
-            zipCode: contact.address?.postalCode || "",
-            city: contact.address?.city || "",
-          };
-          return acc;
-        }, {});
-
-        setSelectedContacts((prevState) => ({
-          ...prevState,
-          ...formattedContacts,
-        }));
+        setContacts(newContacts);
+      } else {
+        navigate("/details");
       }
     } catch (error) {
       console.error("Error selecting contacts:", error);
     }
+  };
+
+  const saveContactsToLocalStorage = (contacts) => {
+    const contactsToSave = contacts.reduce((acc, contact) => {
+      const email = contact.email || "no-email";
+      acc[email] = {
+        avatar: contact.photo ? contact.photo.url : defaultProfilePic,
+        name: contact.name,
+        email: contact.email,
+        mobileNo: contact.tel,
+        houseNo: contact.address?.house || "",
+        streetName: contact.address?.street || "",
+        zipCode: contact.address?.postalCode || "",
+        city: contact.address?.city || "",
+      };
+      return acc;
+    }, {});
+
+    console.log(contactsToSave);
+
+    localStorage.setItem("contacts", JSON.stringify(contactsToSave));
+  };
+
+  const loadContactsFromLocalStorage = () => {
+    const storedContacts = localStorage.getItem("contacts");
+    return storedContacts ? JSON.parse(storedContacts) : {};
   };
 
   const sortedContacts = () => {
@@ -113,6 +124,39 @@ function AddContacts() {
     });
   };
 
+  const handleSendMail = () => {
+    localStorage.removeItem("contacts");
+  };
+
+  useEffect(() => {
+    const storedContacts = loadContactsFromLocalStorage();
+    setSelectedContacts(storedContacts);
+  }, []);
+
+  useEffect(() => {
+    if (contacts.length > 0) {
+      const updatedContacts = contacts.reduce((acc, contact) => {
+        const email = contact.email || "no-email";
+        acc[email] = {
+          avatar: contact.photo ? contact.photo.url : defaultProfilePic,
+          name: contact.name,
+          email: contact.email,
+          mobileNo: contact.tel,
+          houseNo: contact.address?.house || "",
+          streetName: contact.address?.street || "",
+          zipCode: contact.address?.postalCode || "",
+          city: contact.address?.city || "",
+        };
+        return acc;
+      }, {});
+
+      const mergedContacts = { ...selectedContacts, ...updatedContacts };
+
+      setSelectedContacts(mergedContacts);
+      saveContactsToLocalStorage(mergedContacts);
+    }
+  }, [contacts, selectedContacts]);
+
   return (
     <main className={styles.main}>
       <br />
@@ -150,27 +194,32 @@ function AddContacts() {
 
       {filterContacts().length > 0 ? (
         <div className={styles.cards}>
-          {filterContacts().map((contact, index) => {
+          {filterContacts().map((contact) => {
             return (
-              <div key={contact.emailId} className={styles.card}>
-              <Card
-                key={contact.email || index}
-                src={contact.avatar || defaultProfilePic}
-                name={contact.name}
-                tel={contact.mobileNo}
-                address={`${contact.houseNo} ${contact.streetName}, ${contact.city} ${contact.zipCode}`}
-                openMenu={() =>(console.log(contact.email), setEmilID(contact.email))}
-              />
-              <div className={styles.menu}>
-              {contact.email === emailId &&
-              <ContextMenu text = "Edit Contact"
-              textDanger = "Delete"
-              textColor = "Var(--primary-active)"
-              textColorDanger = "var(--danger)"
-              editContact = {() => null}
-              deleteContact = {() =>  null}/>
-            }
-            </div>
+              <div key={contact.email} className={styles.card}>
+                <Card
+                  key={contact.email}
+                  src={contact.avatar || defaultProfilePic}
+                  name={contact.name}
+                  tel={contact.mobileNo}
+                  address={`${contact.houseNo} ${contact.streetName}, ${contact.city} ${contact.zipCode}`}
+                  openMenu={() => {
+                    console.log(contact.email);
+                    setEmail(contact.email);
+                  }}
+                />
+                <div className={styles.menu}>
+                  {contact.email === emailId && (
+                    <ContextMenu
+                      text="Edit Contact"
+                      textDanger="Delete"
+                      textColor="Var(--primary-active)"
+                      textColorDanger="var(--danger)"
+                      editContact={() => null}
+                      deleteContact={() => null}
+                    />
+                  )}
+                </div>
               </div>
             );
           })}
@@ -192,6 +241,7 @@ function AddContacts() {
         type={"primary"}
         textColor={"var(--primary-light)"}
         _btnType={"submit"}
+        handleClick={handleSendMail}
       ></Button>
       <br />
       <br />
