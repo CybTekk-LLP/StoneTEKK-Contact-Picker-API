@@ -9,12 +9,14 @@ import styles from "./AddContacts.module.css";
 import EmptyState from "../EmptyState/EmptyState";
 import defaultProfilePic from "./../../images/DefaultProfilePic.svg";
 import { useSelector } from "react-redux";
+import ContextMenu from "../ContextMenu/ContextMenu";
 
 function AddContacts() {
   const [selectedOption, setSelectedOption] = useState("All Contacts");
   const [selectedContacts, setSelectedContacts] = useState([]);
   const [contacts, setContacts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [emailId, setEmilID] = useState("");
   const navigate = useNavigate();
 
   const contactData = useSelector((state) => state.contactData);
@@ -150,13 +152,26 @@ function AddContacts() {
         <div className={styles.cards}>
           {filterContacts().map((contact, index) => {
             return (
+              <div className={styles.card}>
               <Card
                 key={contact.email || index}
                 src={contact.avatar || defaultProfilePic}
                 name={contact.name}
                 tel={contact.mobileNo}
                 address={`${contact.houseNo} ${contact.streetName}, ${contact.city} ${contact.zipCode}`}
+                openMenu={() => setEmilID(contact.email)}
               />
+              <div className={styles.menu}>
+              {contact.email === emailId &&
+              <ContextMenu text = "Edit Contact"
+              textDanger = "Delete"
+              textColor = "Var(--primary-active)"
+              textColorDanger = "var(--danger)"
+              editContact = {() => null}
+              deleteContact = {() =>  null}/>
+            }
+            </div>
+              </div>
             );
           })}
         </div>

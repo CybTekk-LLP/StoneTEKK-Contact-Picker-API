@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Typography from "../Typography/Typography";
 import styles from "./Card.module.css";
 import context from "./../../images/Dots.svg";

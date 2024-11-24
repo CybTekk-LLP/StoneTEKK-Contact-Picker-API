@@ -21,3 +21,13 @@
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 20px;
 }
+
+.card{
+    position: relative;
+}
+
+.menu{
+    position: absolute;
+    inset-inline-end: 5px;
+    inset-block-end: -100px;
+}
