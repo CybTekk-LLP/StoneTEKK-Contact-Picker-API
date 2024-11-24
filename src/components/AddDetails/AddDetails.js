@@ -144,7 +144,7 @@ const AddDetails = () => {
         text={"Looks Good"}
         type={"primary"}
         textColor={"var(--primary-light)"}
-        _btnType={"submit"}
+        _btnType={"reset"}
       ></Button>
       <br />
       <br />

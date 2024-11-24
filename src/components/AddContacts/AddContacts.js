@@ -14,6 +14,7 @@ import defaultProfilePic from "./../../images/DefaultProfilePic.svg";
 function AddContacts({ handleSearch }) {
   const [selectedOption, setSelectedOption] = useState("All Contacts");
   const [selectedContacts, setSelectedContacts] = useState([]);
+  const [contacts, setContacts] = useState([]);
 
   const options = [
     "All Contacts",
@@ -30,11 +31,8 @@ function AddContacts({ handleSearch }) {
 
   const handleAddContacts = async () => {
     try {
-      const contacts = await navigator.contacts.select([
-        "name",
-        "email",
-        "tel",
-        "address",
+      setContacts([
+        await navigator.contacts.select(["name", "email", "tel", "address"]),
       ]);
 
       if (contacts.length > 0) {
@@ -48,7 +46,8 @@ function AddContacts({ handleSearch }) {
           zipCode: contact.address?.postalCode || "",
           city: contact.address?.city || "",
         }));
-
+        console.log(formattedContacts);
+        // Use formatted contacts
         setSelectedContacts(formattedContacts);
       }
     } catch (error) {
@@ -88,7 +87,7 @@ function AddContacts({ handleSearch }) {
         text={"Add Contacts to Send Order"}
         type={"secondary"}
         textColor={"var(--correct-darker)"}
-        onClick={handleAddContacts}
+        handleClick={handleAddContacts}
       ></Button>
 
       {selectedContacts.length > 0 ? (
