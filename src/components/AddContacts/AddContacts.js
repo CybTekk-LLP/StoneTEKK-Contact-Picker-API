@@ -28,6 +28,10 @@ function AddContacts({ handleSearch }) {
     "Descending Z-A",
   ];
 
+  // Merge the contact data from the store and the newly selected contacts
+  const allContacts = { ...contactData };
+
+  // Function to handle sorting (if needed)
   const handleSelect = (option) => {
     setSelectedOption(option);
     // Perform sorting or other logic here
@@ -59,13 +63,41 @@ function AddContacts({ handleSearch }) {
         }, {});
 
         console.log(formattedContacts);
-        // Use formatted contacts
-        setSelectedContacts(formattedContacts);
+        // Merge formatted contacts with existing contactData
+        setSelectedContacts((prevState) => ({
+          ...prevState,
+          ...formattedContacts,
+        }));
       }
     } catch (error) {
       console.error("Error selecting contacts:", error);
     }
   };
+
+  // Automatically populate selectedContacts with both the existing contactData and new contacts
+  useEffect(() => {
+    if (contacts.length > 0) {
+      const formattedContacts = contacts.reduce((acc, contact) => {
+        // Use email as the key
+        const email = contact.email || "no-email"; // Fallback if email is missing
+        acc[email] = {
+          avatar: contact.photo ? contact.photo.url : defaultProfilePic,
+          name: contact.name,
+          email: contact.email,
+          mobileNo: contact.tel,
+          houseNo: contact.address?.house || "",
+          streetName: contact.address?.street || "",
+          zipCode: contact.address?.postalCode || "",
+          city: contact.address?.city || "",
+        };
+        return acc;
+      }, {});
+      setSelectedContacts((prevState) => ({
+        ...prevState,
+        ...formattedContacts,
+      }));
+    }
+  }, [contacts]);
 
   return (
     <main className={styles.main}>
@@ -102,15 +134,22 @@ function AddContacts({ handleSearch }) {
         handleClick={handleAddContacts}
       ></Button>
 
-      {Object.keys(selectedContacts).length > 0 ? (
+      {Object.keys(allContacts).length > 0 ||
+      Object.keys(selectedContacts).length > 0 ? (
         <div className={styles.cards}>
-          {Object.keys(selectedContacts).map((email, index) => {
-            const contact = selectedContacts[email];
+          {/* Render cards from both existing contact data and newly selected contacts */}
+          {[
+            ...new Set([
+              ...Object.keys(allContacts),
+              ...Object.keys(selectedContacts),
+            ]),
+          ].map((email) => {
+            const contact = allContacts[email] || selectedContacts[email];
 
             return (
               <Card
                 key={email}
-                src={contact.avatar}
+                src={contact.avatar || defaultProfilePic}
                 name={contact.name}
                 tel={contact.mobileNo}
                 address={`${contact.houseNo} ${contact.streetName}, ${contact.city} ${contact.zipCode}`}

@@ -12,6 +12,7 @@
     block-size: 200px;
     border-radius: 12px 12px 0 0;
     object-fit: cover;
+    background-color: var(--primary-light);
 }
 
 
