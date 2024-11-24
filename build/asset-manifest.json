@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/StoneTEKK-Contact-Picker-API/static/css/main.f523357f.css",
+    "main.js": "/StoneTEKK-Contact-Picker-API/static/js/main.fef8969f.js",
+    "static/js/453.f108152b.chunk.js": "/StoneTEKK-Contact-Picker-API/static/js/453.f108152b.chunk.js",
+    "static/media/EmptyState.svg": "/StoneTEKK-Contact-Picker-API/static/media/EmptyState.c4070abd8f16504e22e7de845d69d07c.svg",
+    "static/media/Cancel.svg": "/StoneTEKK-Contact-Picker-API/static/media/Cancel.f3a37e6ffcbfea4f17d0.svg",
+    "static/media/Searchbar.svg": "/StoneTEKK-Contact-Picker-API/static/media/Searchbar.e18216d838aeaefff70327a269382376.svg",
+    "index.html": "/StoneTEKK-Contact-Picker-API/index.html",
+    "static/media/DefaultProfilePic.svg": "/StoneTEKK-Contact-Picker-API/static/media/DefaultProfilePic.8e8ec0b16ec2da026de2097ed8613e37.svg",
+    "static/media/Dots.svg": "/StoneTEKK-Contact-Picker-API/static/media/Dots.69af6ce60cffc6204cfa489d33c2eed5.svg",
+    "static/media/EditPen.svg": "/StoneTEKK-Contact-Picker-API/static/media/EditPen.6e3c4faa240ad33300407ba9b70a021e.svg",
+    "main.f523357f.css.map": "/StoneTEKK-Contact-Picker-API/static/css/main.f523357f.css.map",
+    "main.fef8969f.js.map": "/StoneTEKK-Contact-Picker-API/static/js/main.fef8969f.js.map",
+    "453.f108152b.chunk.js.map": "/StoneTEKK-Contact-Picker-API/static/js/453.f108152b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f523357f.css",
+    "static/js/main.fef8969f.js"
+  ]
+}
