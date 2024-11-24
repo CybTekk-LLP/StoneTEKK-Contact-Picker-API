@@ -11,10 +11,10 @@ import styles from "./AddDetails.module.css";
 const AddDetails = () => {
   const [userDetails, setUserDetails] = useState({ name: "",
     email: "",
-    mobileNumber: "",
+    phoneNumber: "",
     houseNo: "",
     streetName: "",
-    zipcode: "",
+    zipCode: "",
     city: "",
     profileImage: ""
   });
