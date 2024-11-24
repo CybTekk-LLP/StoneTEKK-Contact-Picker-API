@@ -10,6 +10,7 @@ const InputDefault = ({
   _inputMode,
   handleValue,
   index,
+  _required,
 }) => {
   const [value, setValue] = useState("");
 
@@ -33,6 +34,7 @@ const InputDefault = ({
         value={value}
         onInput={handleInput}
         id={"input" + type + index}
+        required={_required}
       />
     </div>
   );

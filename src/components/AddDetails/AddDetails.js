@@ -9,17 +9,18 @@ import { add } from "./../../store/contactDetailSlice";
 import styles from "./AddDetails.module.css";
 
 const AddDetails = () => {
-  const [userDetails, setUserDetails] = useState({ name: "",
+  const [userDetails, setUserDetails] = useState({
+    name: "",
     email: "",
     phoneNumber: "",
     houseNo: "",
     streetName: "",
     zipCode: "",
     city: "",
-    profileImage: ""
+    profileImage: "",
   });
   const dispatch = useDispatch();
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleName = (value) => {
     setUserDetails((prevDetails) => ({ ...prevDetails, name: value }));
@@ -59,7 +60,7 @@ const AddDetails = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(add(userDetails));
-    navigate("/")
+    navigate("/");
   };
 
   return (
@@ -87,6 +88,7 @@ const AddDetails = () => {
         index={1}
         autoComplete="name"
         placeholder="e.g. Jon Doe"
+        _required={true}
       />
       <br />
       <InputDefault
@@ -97,6 +99,7 @@ const AddDetails = () => {
         index={2}
         autoComplete="email"
         placeholder="e.g. abc@example.com"
+        _required={true}
       />
       <br />
       <InputDefault
