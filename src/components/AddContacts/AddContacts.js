@@ -1,20 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Typography from "../Typography/Typography";
 import Profile from "../Profile/Profile";
 import Select from "../Select/Select";
 import Searchbar from "../Searchbar/Searchbar";
 import Button from "../Button/Button";
-import { useDispatch } from "react-redux";
-import { add } from "./../../store/contactDetailSlice";
 import Card from "../Card/Card";
 import styles from "./AddContacts.module.css";
 import EmptyState from "../EmptyState/EmptyState";
 import defaultProfilePic from "./../../images/DefaultProfilePic.svg";
+import { useSelector } from "react-redux";
 
 function AddContacts({ handleSearch }) {
   const [selectedOption, setSelectedOption] = useState("All Contacts");
   const [selectedContacts, setSelectedContacts] = useState([]);
   const [contacts, setContacts] = useState([]);
+  const contactData = useSelector(state => state.contactData); // This is the data from store we are getting
+  
+  
 
   const options = [
     "All Contacts",

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Typography from "../Typography/Typography";
 import Profile from "../Profile/Profile";
 import InputDefault from "../InputDefault/InputDefault";
@@ -10,6 +11,7 @@ import styles from "./AddDetails.module.css";
 const AddDetails = () => {
   const [userDetails, setUserDetails] = useState({});
   const dispatch = useDispatch();
+  const navigate = useNavigate(); 
 
   const handleName = (value) => {
     setUserDetails((prevDetails) => ({ ...prevDetails, name: value }));
@@ -49,6 +51,7 @@ const AddDetails = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(add(userDetails));
+    navigate("/")
   };
 
   return (
