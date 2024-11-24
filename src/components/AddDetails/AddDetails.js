@@ -12,12 +12,12 @@ const AddDetails = () => {
   const [userDetails, setUserDetails] = useState({
     name: "",
     email: "",
-    phoneNumber: "",
+    mobileNo: "",
     houseNo: "",
     streetName: "",
     zipCode: "",
     city: "",
-    profileImage: "",
+    avatar: "",
   });
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ const AddDetails = () => {
   };
 
   const handlePhoneNumber = (value) => {
-    setUserDetails((prevDetails) => ({ ...prevDetails, phoneNumber: value }));
+    setUserDetails((prevDetails) => ({ ...prevDetails, mobileNo: value }));
   };
 
   const handleStreetName = (value) => {
@@ -53,7 +53,7 @@ const AddDetails = () => {
   const handleImageUrl = (imageUrl) => {
     setUserDetails((prevDetails) => ({
       ...prevDetails,
-      profileImage: imageUrl,
+      avatar: imageUrl,
     }));
   };
 

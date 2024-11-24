@@ -6,7 +6,7 @@ import context from "./../../images/Dots.svg";
 const Card = ({ src, name, tel, address, openMenu }) => {
   return (
     <article className={styles.card}>
-      <img src={src} alt={`Retailer + ${name}`}></img>
+      <img src={src} alt={`Retailer: ${name}`}></img>
       <div>
         <Typography text={name} _color="var(--primary-dark)" type={"caption"}>
           {" "}
