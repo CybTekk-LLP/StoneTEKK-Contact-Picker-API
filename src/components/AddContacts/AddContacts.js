@@ -152,14 +152,14 @@ function AddContacts() {
         <div className={styles.cards}>
           {filterContacts().map((contact, index) => {
             return (
-              <div className={styles.card}>
+              <div key={contact.emailId} className={styles.card}>
               <Card
                 key={contact.email || index}
                 src={contact.avatar || defaultProfilePic}
                 name={contact.name}
                 tel={contact.mobileNo}
                 address={`${contact.houseNo} ${contact.streetName}, ${contact.city} ${contact.zipCode}`}
-                openMenu={() => setEmilID(contact.email)}
+                openMenu={() =>(console.log(contact.email), setEmilID(contact.email))}
               />
               <div className={styles.menu}>
               {contact.email === emailId &&
