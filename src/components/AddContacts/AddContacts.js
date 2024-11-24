@@ -17,14 +17,24 @@ function AddContacts() {
   const [selectedContacts, setSelectedContacts] = useState({});
   const [contacts, setContacts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [emailId, setEmail] = useState("");
+  const [emailId, setEmailId] = useState("");
+  const [contextMenuVisible, setContextMenuVisible] = useState(false);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const contactData = useSelector((state) => state.contactData);
 
-  const handleDelete = (id) => {
-    dispatch(remove(id));
+  const handleDelete = (email) => {
+    dispatch(remove(email));
+    const storedContacts = loadContactsFromLocalStorage();
+    delete storedContacts[email];
+    localStorage.setItem("contacts", JSON.stringify(storedContacts));
+    const updatedContacts = { ...selectedContacts };
+    delete updatedContacts[email];
+
+    setSelectedContacts(updatedContacts);
+    setContextMenuVisible(false);
   };
 
   const options = [
@@ -79,8 +89,6 @@ function AddContacts() {
       return acc;
     }, {});
 
-    console.log(contactsToSave);
-
     localStorage.setItem("contacts", JSON.stringify(contactsToSave));
   };
 
@@ -132,6 +140,15 @@ function AddContacts() {
 
   const handleSendMail = () => {
     localStorage.removeItem("contacts");
+  };
+
+  const toggleContextMenu = (email) => {
+    if (email === emailId) {
+      setContextMenuVisible(!contextMenuVisible);
+    } else {
+      setEmailId(email);
+      setContextMenuVisible(true);
+    }
   };
 
   useEffect(() => {
@@ -209,13 +226,10 @@ function AddContacts() {
                   name={contact.name}
                   tel={contact.mobileNo}
                   address={`${contact.houseNo} ${contact.streetName}, ${contact.city} ${contact.zipCode}`}
-                  openMenu={() => {
-                    console.log(contact.email);
-                    setEmail(contact.email);
-                  }}
+                  toggleMenu={() => toggleContextMenu(contact.email)}
                 />
                 <div className={styles.menu}>
-                  {contact.email === emailId && (
+                  {contextMenuVisible && emailId === contact.email && (
                     <ContextMenu
                       text="Edit Contact"
                       textDanger="Delete"

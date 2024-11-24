@@ -3,7 +3,7 @@ import Typography from "../Typography/Typography";
 import styles from "./Card.module.css";
 import context from "./../../images/Dots.svg";
 
-const Card = ({ src, name, tel, address, openMenu }) => {
+const Card = ({ src, name, tel, address, toggleMenu }) => {
   return (
     <article className={styles.card}>
       <img src={src} alt={`Retailer: ${name}`}></img>
@@ -18,7 +18,7 @@ const Card = ({ src, name, tel, address, openMenu }) => {
           {" "}
         </Typography>
       </div>
-      <button onClick={openMenu}>
+      <button onClick={toggleMenu}>
         <img src={context} alt="context menu" />{" "}
       </button>
     </article>
