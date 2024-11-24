@@ -8,8 +8,9 @@ import Card from "../Card/Card";
 import styles from "./AddContacts.module.css";
 import EmptyState from "../EmptyState/EmptyState";
 import defaultProfilePic from "./../../images/DefaultProfilePic.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ContextMenu from "../ContextMenu/ContextMenu";
+import { remove } from "./../../store/contactDetailSlice";
 
 function AddContacts() {
   const [selectedOption, setSelectedOption] = useState("All Contacts");
@@ -18,8 +19,13 @@ function AddContacts() {
   const [searchQuery, setSearchQuery] = useState("");
   const [emailId, setEmail] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const contactData = useSelector((state) => state.contactData);
+
+  const handleDelete = (id) => {
+    dispatch(remove(id));
+  };
 
   const options = [
     "All Contacts",
@@ -216,7 +222,7 @@ function AddContacts() {
                       textColor="Var(--primary-active)"
                       textColorDanger="var(--danger)"
                       editContact={() => null}
-                      deleteContact={() => null}
+                      deleteContact={() => handleDelete(contact.email)}
                     />
                   )}
                 </div>
