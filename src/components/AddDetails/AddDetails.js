@@ -9,7 +9,15 @@ import { add } from "./../../store/contactDetailSlice";
 import styles from "./AddDetails.module.css";
 
 const AddDetails = () => {
-  const [userDetails, setUserDetails] = useState({});
+  const [userDetails, setUserDetails] = useState({ name: "",
+    email: "",
+    mobileNumber: "",
+    houseNo: "",
+    streetName: "",
+    zipcode: "",
+    city: "",
+    profileImage: ""
+  });
   const dispatch = useDispatch();
   const navigate = useNavigate(); 
 
