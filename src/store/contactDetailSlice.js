@@ -9,8 +9,11 @@ const contactDetailSlice = createSlice({
     add: (state, action) => {
       state[action.payload.email]= action.payload;
     },
+    remove: (state, action) => {
+        delete state[action.payload];
+    }
   },
 });
 
-export const { add } = contactDetailSlice.actions;
+export const { add, remove } = contactDetailSlice.actions;
 export default contactDetailSlice.reducer;
