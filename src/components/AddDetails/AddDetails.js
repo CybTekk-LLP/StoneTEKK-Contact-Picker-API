@@ -1,11 +1,9 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import Typography from "../Typography/Typography";
 import Profile from "../Profile/Profile";
 import InputDefault from "../InputDefault/InputDefault";
 import Button from "../Button/Button";
-import { useDispatch } from "react-redux";
-import { add } from "./../../store/contactDetailSlice";
 import styles from "./AddDetails.module.css";
 
 const AddDetails = () => {
@@ -19,8 +17,27 @@ const AddDetails = () => {
     city: "",
     avatar: "",
   });
-  const dispatch = useDispatch();
+
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const urlParams = new URLSearchParams(location.search);
+  const emailFromUrl = decodeURIComponent(urlParams.get("email"));
+
+  useEffect(() => {
+    if (emailFromUrl) {
+      const storedContacts = localStorage.getItem("contacts");
+      if (storedContacts) {
+        const contacts = JSON.parse(storedContacts);
+        const contact = contacts[emailFromUrl];
+
+        if (contact) {
+          console.log(contact);
+          setUserDetails(contact);
+        }
+      }
+    }
+  }, [emailFromUrl]);
 
   const handleName = (value) => {
     setUserDetails((prevDetails) => ({ ...prevDetails, name: value }));
@@ -57,31 +74,8 @@ const AddDetails = () => {
     }));
   };
 
-  const saveContactToLocalStorage = (contact) => {
-    const storedContacts = localStorage.getItem("contacts");
-    let contacts = storedContacts ? JSON.parse(storedContacts) : {};
-
-    const email = contact.email || "no-email";
-    contacts[email] = {
-      avatar: contact.avatar || "",
-      name: contact.name,
-      email: contact.email,
-      mobileNo: contact.mobileNo,
-      houseNo: contact.houseNo,
-      streetName: contact.streetName,
-      zipCode: contact.zipCode,
-      city: contact.city,
-    };
-
-    localStorage.setItem("contacts", JSON.stringify(contacts));
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(add(userDetails));
-
-    saveContactToLocalStorage(userDetails);
-
     navigate("/");
   };
 
@@ -111,6 +105,7 @@ const AddDetails = () => {
         autoComplete="name"
         placeholder="e.g. Jon Doe"
         _required={true}
+        value={userDetails.name}
       />
       <br />
       <InputDefault
@@ -122,6 +117,7 @@ const AddDetails = () => {
         autoComplete="email"
         placeholder="e.g. abc@example.com"
         _required={true}
+        value={userDetails.email}
       />
       <br />
       <InputDefault
@@ -132,6 +128,7 @@ const AddDetails = () => {
         index={3}
         autoComplete="tel"
         placeholder="e.g. +1 1234 5678 90"
+        value={userDetails.mobileNo}
       />
       <br />
       <InputDefault
@@ -142,6 +139,7 @@ const AddDetails = () => {
         index={4}
         autoComplete="address-line1"
         placeholder="e.g. 123"
+        value={userDetails.houseNo}
       />
       <br />
       <InputDefault
@@ -152,6 +150,7 @@ const AddDetails = () => {
         index={5}
         autoComplete="street-address"
         placeholder="e.g. abc road"
+        value={userDetails.streetName}
       />
       <br />
       <InputDefault
@@ -162,6 +161,7 @@ const AddDetails = () => {
         index={6}
         autoComplete="postal-code"
         placeholder="e.g. 11111"
+        value={userDetails.zipCode}
       />
       <br />
       <InputDefault
@@ -172,6 +172,7 @@ const AddDetails = () => {
         index={7}
         autoComplete="address-level2"
         placeholder="e.g. New York"
+        value={userDetails.city}
       />
       <br />
       <br />

@@ -37,6 +37,10 @@ function AddContacts() {
     setContextMenuVisible(false);
   };
 
+  const handleEdit = (encodedEmail) => {
+    navigate("/details?email=" + encodedEmail);
+  };
+
   const options = [
     "All Contacts",
     "Newest First",
@@ -198,7 +202,7 @@ function AddContacts() {
           text="Sort By:"
           type="body"
           _fontweight={400}
-          _color={"var(--outline)"}
+          _color={"var(--placeholder)"}
         />
         <Select
           text={selectedOption}
@@ -235,7 +239,9 @@ function AddContacts() {
                       textDanger="Delete"
                       textColor="Var(--primary-active)"
                       textColorDanger="var(--danger)"
-                      editContact={() => null}
+                      editContact={() =>
+                        handleEdit(encodeURIComponent(contact.email))
+                      }
                       deleteContact={() => handleDelete(contact.email)}
                     />
                   )}
