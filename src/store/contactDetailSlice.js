@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-let initialState = [];
+let initialState = {};
 
 const contactDetailSlice = createSlice({
   name: "contactDetailSlice",
   initialState: initialState,
   reducers: {
     add: (state, action) => {
-      state.push(action.payload);
+      state[action.payload.email]= action.payload;
     },
   },
 });
