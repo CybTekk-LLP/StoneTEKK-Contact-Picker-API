@@ -11,7 +11,7 @@ const InputDefault = ({
   handleValue,
   index,
 }) => {
-  const [value, setValue] = useState();
+  const [value, setValue] = useState("");
 
   const handleInput = (e) => {
     const inputValue = e.target.value;
