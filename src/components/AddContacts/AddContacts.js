@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Typography from "../Typography/Typography";
 import Profile from "../Profile/Profile";
+import { useNavigate } from "react-router-dom";
 import Select from "../Select/Select";
 import Searchbar from "../Searchbar/Searchbar";
 import Button from "../Button/Button";
@@ -14,9 +15,9 @@ function AddContacts({ handleSearch }) {
   const [selectedOption, setSelectedOption] = useState("All Contacts");
   const [selectedContacts, setSelectedContacts] = useState([]);
   const [contacts, setContacts] = useState([]);
-  const contactData = useSelector(state => state.contactData); // This is the data from store we are getting
-  
-  
+  const navigate = useNavigate();
+
+  const contactData = useSelector((state) => state.contactData); // This is the data from store we are getting
 
   const options = [
     "All Contacts",
@@ -33,9 +34,11 @@ function AddContacts({ handleSearch }) {
 
   const handleAddContacts = async () => {
     try {
-      setContacts([
-        await navigator.contacts.select(["name", "email", "tel", "address"]),
-      ]);
+      if ("contacts" in navigator)
+        setContacts([
+          await navigator.contacts.select(["name", "email", "tel", "address"]),
+        ]);
+      else navigate("/details");
 
       if (contacts.length > 0) {
         const formattedContacts = contacts.map((contact) => ({
