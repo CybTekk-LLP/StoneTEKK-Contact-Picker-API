@@ -16,7 +16,8 @@ function App() {
         <Route index element={<AddContacts />} />
         <Route path="/details/:email?" element={<AddDetails />} />
       </Route>
-    )
+    ),
+    { basename: process.env.PUBLIC_URL || "/" }
   );
   return (
     <>

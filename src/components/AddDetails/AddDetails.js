@@ -100,7 +100,7 @@ const AddDetails = () => {
         type="text"
         _inputMode="text"
         handleValue={handleName}
-        inputLabel="Name"
+        inputLabel="Name* (Required)"
         index={1}
         autoComplete="name"
         placeholder="e.g. Jon Doe"
