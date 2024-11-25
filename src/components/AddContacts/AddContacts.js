@@ -151,7 +151,7 @@ const AddContacts = () => {
         title: "Sucessfully Sent Emails",
         description:
           "The mails have been sent and your retailers will receive them shortly.",
-        type: true,
+        type: "success",
       }));
       setShowToast(true);
     } catch (error) {
@@ -160,7 +160,7 @@ const AddContacts = () => {
         title: "Failed to Send Emails",
         description:
           "The mails couldn't be sent as we might be testing things.",
-        type: false,
+        type: "failure",
       }));
       setShowToast(false);
     } finally {
