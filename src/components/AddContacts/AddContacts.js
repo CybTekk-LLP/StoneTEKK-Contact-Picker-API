@@ -12,6 +12,7 @@ import EmptyState from "../EmptyState/EmptyState";
 import defaultProfilePic from "./../../images/DefaultProfilePic.svg";
 import ContextMenu from "../ContextMenu/ContextMenu";
 import styles from "./AddContacts.module.css";
+import { isDisabled } from "@testing-library/user-event/dist/utils";
 
 const AddContacts = () => {
   const [selectedOption, setSelectedOption] = useState("All Contacts");
@@ -19,6 +20,7 @@ const AddContacts = () => {
   const [contacts, setContacts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [emailId, setEmailId] = useState("");
+  const [isDisabled, setIsDisabled] = useState(false);
   const [contextMenuVisible, setContextMenuVisible] = useState(false);
   const [showToast, setShowToast] = useState(undefined);
   const [toastConfigs, setToastConfigs] = useState({
@@ -123,6 +125,7 @@ const AddContacts = () => {
   };
 
   const handleSendMail = async () => {
+    setIsDisabled(true);
     const emailData = {
       to: [Object.keys(contactData)],
       subject: "Experimental Mail Using Contact Picker API",
@@ -164,6 +167,7 @@ const AddContacts = () => {
       }));
       setShowToast(false);
     } finally {
+      setIsDisabled(false);
       setTimeout(() => {
         setShowToast(undefined);
       }, 5000);
@@ -279,10 +283,11 @@ const AddContacts = () => {
       />
       <br />
       <Button
-        text={"Send Mail with Order Details"}
+        text={isDisabled ? "Working on it..." : "Send Mail with Order Details"}
         type={"primary"}
         textColor={"var(--primary-light)"}
         _btnType={"submit"}
+        _disabled={isDisabled}
         handleClick={handleSendMail}
       ></Button>
       {showToast !== undefined && (
