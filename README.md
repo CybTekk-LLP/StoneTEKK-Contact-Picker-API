@@ -1,6 +1,6 @@
-# Stonetekk Contact Picker App
+# StoneTEKK Contact Picker App
 
-The **Stonetekk Contact Picker App** simplifies the process of managing retailer orders for dealers in the stone management industry. Designed specifically for dealers interacting with retailers outside the Stonetekk ecosystem, the app leverages the **Contact Picker API** to streamline onboarding retailer details and enhance user experience.
+The **StoneTEKK Contact Picker App** simplifies the process of managing retailer orders for dealers in the stone management industry. Designed specifically for dealers interacting with retailers outside the StoneTEKK ecosystem, the app leverages the **Contact Picker API** to streamline onboarding retailer details and enhance user experience.
 
 ---
 
@@ -8,7 +8,7 @@ The **Stonetekk Contact Picker App** simplifies the process of managing retailer
 
 ### The Problem
 
-1. Retailers who are not part of the Stonetekk ecosystem frequently place recurring stone orders with dealers.
+1. Retailers who are not part of the StoneTEKK ecosystem frequently place recurring stone orders with dealers.
 2. Dealers previously had to manually fill out forms with retailer details such as name, address, and phone number, leading to frustration and inefficiency.
 3. Existing autofill features were limited to the dealer’s saved addresses, offering little help for entering retailer information.
 
@@ -25,7 +25,7 @@ Using the **Contact Picker API**, the app enables dealers to:
    - Email retailers with their order details, including delivery name and address.
    - Reduce friction for retailers not currently in the StoneTEKK ecosystem as well as increase the chances to onboard New retailers with every mail sent.
 
-This time-saving feature improves the dealer's workflow, providing a modernized approach to managing orders for retailers who are not yet onboarded onto Stonetekk.
+This time-saving feature improves the dealer's workflow, providing a modernized approach to managing orders for retailers who are not yet onboarded onto StoneTEKK.
 
 ---
 
@@ -77,4 +77,4 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 ---
 
-With the **Stonetekk Contact Picker App**, dealers can now manage retailer orders with unprecedented ease, paving the way for a more efficient and streamlined stone management process.
+With the **StoneTEKK Contact Picker App**, dealers can now manage retailer orders with unprecedented ease, paving the way for a more efficient and streamlined stone management process.
