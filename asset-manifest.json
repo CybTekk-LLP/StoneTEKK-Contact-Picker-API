@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/StoneTEKK-Contact-Picker-API/static/css/main.f523357f.css",
-    "main.js": "/StoneTEKK-Contact-Picker-API/static/js/main.1b115228.js",
+    "main.css": "/StoneTEKK-Contact-Picker-API/static/css/main.168fd54d.css",
+    "main.js": "/StoneTEKK-Contact-Picker-API/static/js/main.9afef825.js",
     "static/js/453.f108152b.chunk.js": "/StoneTEKK-Contact-Picker-API/static/js/453.f108152b.chunk.js",
     "static/media/EmptyState.svg": "/StoneTEKK-Contact-Picker-API/static/media/EmptyState.c4070abd8f16504e22e7de845d69d07c.svg",
     "static/media/Cancel.svg": "/StoneTEKK-Contact-Picker-API/static/media/Cancel.f3a37e6ffcbfea4f17d0.svg",
@@ -10,12 +10,15 @@
     "static/media/DefaultProfilePic.svg": "/StoneTEKK-Contact-Picker-API/static/media/DefaultProfilePic.8e8ec0b16ec2da026de2097ed8613e37.svg",
     "static/media/Dots.svg": "/StoneTEKK-Contact-Picker-API/static/media/Dots.69af6ce60cffc6204cfa489d33c2eed5.svg",
     "static/media/EditPen.svg": "/StoneTEKK-Contact-Picker-API/static/media/EditPen.6e3c4faa240ad33300407ba9b70a021e.svg",
-    "main.f523357f.css.map": "/StoneTEKK-Contact-Picker-API/static/css/main.f523357f.css.map",
-    "main.1b115228.js.map": "/StoneTEKK-Contact-Picker-API/static/js/main.1b115228.js.map",
+    "static/media/Close.svg": "/StoneTEKK-Contact-Picker-API/static/media/Close.cc9fbd37b37cb61175be0f027358876f.svg",
+    "static/media/Failure.svg": "/StoneTEKK-Contact-Picker-API/static/media/Failure.6324fc0ae668faae8e06b4e4903bb43a.svg",
+    "static/media/Success.svg": "/StoneTEKK-Contact-Picker-API/static/media/Success.ed2e536928ab8723146e5e2a1a23fe5d.svg",
+    "main.168fd54d.css.map": "/StoneTEKK-Contact-Picker-API/static/css/main.168fd54d.css.map",
+    "main.9afef825.js.map": "/StoneTEKK-Contact-Picker-API/static/js/main.9afef825.js.map",
     "453.f108152b.chunk.js.map": "/StoneTEKK-Contact-Picker-API/static/js/453.f108152b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f523357f.css",
-    "static/js/main.1b115228.js"
+    "static/css/main.168fd54d.css",
+    "static/js/main.9afef825.js"
   ]
 }
