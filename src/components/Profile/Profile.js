@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import styles from "./Profile.module.css";
 import editPen from "./../../images/EditPen.svg";
 import defaultProfilePic from "./../../images/DefaultProfilePic.svg";
+import styles from "./Profile.module.css";
 
 const Profile = ({ getImage }) => {
   const [value, setValue] = useState(defaultProfilePic);

@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./Footer.module.css";
 import Anchor from "../Anchor/Anchor";
 import Typography from "../Typography/Typography";
+import styles from "./Footer.module.css";
 
 const Footer = ({ text, url, link }) => {
   return (

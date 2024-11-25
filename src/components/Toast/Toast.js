@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Typography from "../Typography/Typography";
-import styles from "./Toast.module.css";
 import close from "./../../images/Close.svg";
 import failure from "./../../images/Failure.svg";
 import success from "./../../images/Success.svg";
+import styles from "./Toast.module.css";
 
 const Toast = ({ title, description, type }) => {
   const [isVisible, setIsVisible] = useState(true);

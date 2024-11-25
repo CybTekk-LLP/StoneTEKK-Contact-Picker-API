@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { add } from "./../../store/contactDetailSlice";
 import Typography from "../Typography/Typography";
 import Profile from "../Profile/Profile";
 import InputDefault from "../InputDefault/InputDefault";
 import Button from "../Button/Button";
-import { useDispatch, useSelector } from "react-redux";
-import { add } from "./../../store/contactDetailSlice";
-import { useParams } from "react-router-dom";
 import styles from "./AddDetails.module.css";
 
 const AddDetails = () => {

@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
-import Typography from "../Typography/Typography";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { remove } from "./../../store/contactDetailSlice";
+import Typography from "../Typography/Typography";
 import Select from "../Select/Select";
 import Searchbar from "../Searchbar/Searchbar";
 import Button from "../Button/Button";
 import Card from "../Card/Card";
-import styles from "./AddContacts.module.css";
 import EmptyState from "../EmptyState/EmptyState";
 import defaultProfilePic from "./../../images/DefaultProfilePic.svg";
-import { useDispatch, useSelector } from "react-redux";
 import ContextMenu from "../ContextMenu/ContextMenu";
-import { remove } from "./../../store/contactDetailSlice";
+import styles from "./AddContacts.module.css";
 
-function AddContacts() {
+const AddContacts = () => {
   const [selectedOption, setSelectedOption] = useState("All Contacts");
   const [selectedContacts, setSelectedContacts] = useState({});
   const [contacts, setContacts] = useState([]);
@@ -117,25 +117,26 @@ function AddContacts() {
 
   const handleSendMail = async () => {
     const emailData = {
-      to: [
-        Object.keys(contactData)
-      ],
-      subject: "Experimental Mail Using Contact Picker API"
+      to: [Object.keys(contactData)],
+      subject: "Experimental Mail Using Contact Picker API",
     };
-  
+
     try {
-      const response = await fetch("https://stoneworldinternational.com/api/send-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(emailData)
-      });
-  
+      const response = await fetch(
+        "https://stoneworldinternational.com/api/send-email",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(emailData),
+        }
+      );
+
       if (!response.ok) {
         throw new Error("Failed to send email");
       }
-  
+
       const responseData = await response.json();
       console.log("Email sent successfully:", responseData);
     } catch (error) {
@@ -264,6 +265,6 @@ function AddContacts() {
       <br />
     </main>
   );
-}
+};
 
 export default AddContacts;

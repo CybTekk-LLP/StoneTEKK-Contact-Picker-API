@@ -1,7 +1,7 @@
 import React from "react";
 import Typography from "../Typography/Typography";
-import styles from "./EmptyState.module.css";
 import emptyState from "./../../images/EmptyState.svg";
+import styles from "./EmptyState.module.css";
 
 const EmptyState = ({ text }) => {
   return (

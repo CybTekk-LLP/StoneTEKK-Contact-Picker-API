@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import styles from "./InputDefault.module.css";
 import Typography from "../Typography/Typography";
+import styles from "./InputDefault.module.css";
 
 const InputDefault = ({
   type,

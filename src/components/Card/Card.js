@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Typography from "../Typography/Typography";
-import styles from "./Card.module.css";
 import context from "./../../images/Dots.svg";
+import styles from "./Card.module.css";
 
 const Card = ({ src, name, tel, address, toggleMenu }) => {
   return (
