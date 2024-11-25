@@ -17,7 +17,7 @@ function App() {
         <Route path="/details/:email?" element={<AddDetails />} />
       </Route>
     ),
-    { basename: "/StoneTEKK-Contact-Picker-API" }
+    { basename: process.env.PUBLIC_URL || "/" }
   );
   return (
     <>
