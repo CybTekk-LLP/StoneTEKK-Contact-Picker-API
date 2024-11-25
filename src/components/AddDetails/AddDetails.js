@@ -33,6 +33,11 @@ const AddDetails = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const getValue = (query) => {
+    if (!email) return;
+    return contactData[email][query];
+  };
+
   const handleName = (value) => {
     setUserDetails((prevDetails) => ({ ...prevDetails, name: value }));
   };
@@ -100,6 +105,7 @@ const AddDetails = () => {
         autoComplete="name"
         placeholder="e.g. Jon Doe"
         _required={true}
+        _value={getValue("name")}
       />
       <br />
       <InputDefault
@@ -111,6 +117,7 @@ const AddDetails = () => {
         autoComplete="email"
         placeholder="e.g. abc@example.com"
         _required={true}
+        _value={getValue("email")}
       />
       <br />
       <InputDefault
@@ -121,6 +128,7 @@ const AddDetails = () => {
         index={3}
         autoComplete="tel"
         placeholder="e.g. +1 1234 5678 90"
+        _value={getValue("mobileNo")}
       />
       <br />
       <InputDefault
@@ -131,6 +139,7 @@ const AddDetails = () => {
         index={4}
         autoComplete="address-line1"
         placeholder="e.g. 123"
+        _value={getValue("houseNo")}
       />
       <br />
       <InputDefault
@@ -141,6 +150,7 @@ const AddDetails = () => {
         index={5}
         autoComplete="street-address"
         placeholder="e.g. abc road"
+        _value={getValue("streetName")}
       />
       <br />
       <InputDefault
@@ -151,6 +161,7 @@ const AddDetails = () => {
         index={6}
         autoComplete="postal-code"
         placeholder="e.g. 11111"
+        _value={getValue("zipCode")}
       />
       <br />
       <InputDefault
@@ -161,6 +172,7 @@ const AddDetails = () => {
         index={7}
         autoComplete="address-level2"
         placeholder="e.g. New York"
+        _value={getValue("city")}
       />
       <br />
       <br />

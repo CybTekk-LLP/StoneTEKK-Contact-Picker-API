@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./InputDefault.module.css";
 import Typography from "../Typography/Typography";
 
@@ -11,8 +11,15 @@ const InputDefault = ({
   handleValue,
   index,
   _required,
+  _value,
 }) => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(_value || "");
+
+  useEffect(() => {
+    if (_value !== undefined) {
+      setValue(_value);
+    }
+  }, [_value]);
 
   const handleInput = (e) => {
     const inputValue = e.target.value;
