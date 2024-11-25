@@ -26,10 +26,7 @@ function AddContacts() {
   const contactData = useSelector((state) => state.contactData);
 
   const handleDelete = (email) => {
-    dispatch(remove(email));
-    const storedContacts = loadContactsFromLocalStorage();
-    delete storedContacts[email];
-    localStorage.setItem("contacts", JSON.stringify(storedContacts));
+    dispatch(remove(email));  
     const updatedContacts = { ...selectedContacts };
     delete updatedContacts[email];
 
@@ -77,29 +74,9 @@ function AddContacts() {
     }
   };
 
-  const saveContactsToLocalStorage = (contacts) => {
-    const contactsToSave = contacts.reduce((acc, contact) => {
-      const email = contact.email || "no-email";
-      acc[email] = {
-        avatar: contact.photo ? contact.photo.url : defaultProfilePic,
-        name: contact.name,
-        email: contact.email,
-        mobileNo: contact.tel,
-        houseNo: contact.address?.house || "",
-        streetName: contact.address?.street || "",
-        zipCode: contact.address?.postalCode || "",
-        city: contact.address?.city || "",
-      };
-      return acc;
-    }, {});
+ 
 
-    localStorage.setItem("contacts", JSON.stringify(contactsToSave));
-  };
 
-  const loadContactsFromLocalStorage = () => {
-    const storedContacts = localStorage.getItem("contacts");
-    return storedContacts ? JSON.parse(storedContacts) : {};
-  };
 
   const sortedContacts = () => {
     let contactsArray = [
@@ -143,7 +120,7 @@ function AddContacts() {
   };
 
   const handleSendMail = () => {
-    localStorage.removeItem("contacts");
+  
   };
 
   const toggleContextMenu = (email) => {
@@ -154,11 +131,6 @@ function AddContacts() {
       setContextMenuVisible(true);
     }
   };
-
-  useEffect(() => {
-    const storedContacts = loadContactsFromLocalStorage();
-    setSelectedContacts(storedContacts);
-  }, []);
 
   useEffect(() => {
     if (contacts.length > 0) {
@@ -180,7 +152,6 @@ function AddContacts() {
       const mergedContacts = { ...selectedContacts, ...updatedContacts };
 
       setSelectedContacts(mergedContacts);
-      saveContactsToLocalStorage(mergedContacts);
     }
   }, [contacts, selectedContacts]);
 
