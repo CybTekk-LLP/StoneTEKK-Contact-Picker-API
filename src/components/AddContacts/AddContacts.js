@@ -7,6 +7,7 @@ import Select from "../Select/Select";
 import Searchbar from "../Searchbar/Searchbar";
 import Button from "../Button/Button";
 import Card from "../Card/Card";
+import Toast from "../Toast/Toast";
 import EmptyState from "../EmptyState/EmptyState";
 import defaultProfilePic from "./../../images/DefaultProfilePic.svg";
 import ContextMenu from "../ContextMenu/ContextMenu";
@@ -19,6 +20,12 @@ const AddContacts = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [emailId, setEmailId] = useState("");
   const [contextMenuVisible, setContextMenuVisible] = useState(false);
+  const [showToast, setShowToast] = useState(undefined);
+  const [toastConfigs, setToastConfigs] = useState({
+    title: "",
+    description: "",
+    type: "",
+  });
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -138,9 +145,27 @@ const AddContacts = () => {
       }
 
       const responseData = await response.json();
-      console.log("Email sent successfully:", responseData);
+      setToastConfigs((prev) => ({
+        ...prev,
+        title: "Sucessfully Sent Emails",
+        description:
+          "The mails have been sent and your retailers will receive them shortly.",
+        type: false,
+      }));
+      setShowToast(true);
     } catch (error) {
-      console.error("Error sending email:", error);
+      setToastConfigs((prev) => ({
+        ...prev,
+        title: "Failed to Send Emails",
+        description:
+          "The mails couldn't be sent as we might be testing things.",
+        type: false,
+      }));
+      setShowToast(false);
+    } finally {
+      setTimeout(() => {
+        setShowToast(undefined);
+      }, 5000);
     }
   };
 
@@ -259,6 +284,13 @@ const AddContacts = () => {
         _btnType={"submit"}
         handleClick={handleSendMail}
       ></Button>
+      {showToast !== undefined && (
+        <Toast
+          title={toastConfigs.title}
+          description={toastConfigs.description}
+          type={toastConfigs.type}
+        ></Toast>
+      )}
       <br />
       <br />
       <br />
