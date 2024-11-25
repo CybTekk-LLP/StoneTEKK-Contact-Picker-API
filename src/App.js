@@ -16,7 +16,8 @@ function App() {
         <Route index element={<AddContacts />} />
         <Route path="/details/:email?" element={<AddDetails />} />
       </Route>
-    )
+    ),
+    { basename: "/StoneTEKK-Contact-Picker-API" }
   );
   return (
     <>
