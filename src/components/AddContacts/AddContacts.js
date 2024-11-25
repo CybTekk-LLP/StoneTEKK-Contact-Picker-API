@@ -151,7 +151,7 @@ const AddContacts = () => {
         title: "Sucessfully Sent Emails",
         description:
           "The mails have been sent and your retailers will receive them shortly.",
-        type: false,
+        type: true,
       }));
       setShowToast(true);
     } catch (error) {
