@@ -115,7 +115,33 @@ function AddContacts() {
     });
   };
 
-  const handleSendMail = () => {};
+  const handleSendMail = async () => {
+    const emailData = {
+      to: [
+        Object.keys(contactData)
+      ],
+      subject: "Experimental Mail Using Contact Picker API"
+    };
+  
+    try {
+      const response = await fetch("https://stoneworldinternational.com/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(emailData)
+      });
+  
+      if (!response.ok) {
+        throw new Error("Failed to send email");
+      }
+  
+      const responseData = await response.json();
+      console.log("Email sent successfully:", responseData);
+    } catch (error) {
+      console.error("Error sending email:", error);
+    }
+  };
 
   const toggleContextMenu = (email) => {
     if (email === emailId) {
