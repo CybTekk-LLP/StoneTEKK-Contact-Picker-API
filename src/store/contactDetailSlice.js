@@ -7,11 +7,11 @@ const contactDetailSlice = createSlice({
   initialState: initialState,
   reducers: {
     add: (state, action) => {
-      state[action.payload.email]= action.payload;
+      state[action.payload.email] = action.payload;
     },
     remove: (state, action) => {
-        delete state[action.payload];
-    }
+      delete state[action.payload];
+    },
   },
 });
 

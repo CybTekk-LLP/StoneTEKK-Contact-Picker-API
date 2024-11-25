@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Typography from "../Typography/Typography";
 import Profile from "../Profile/Profile";
@@ -6,9 +6,13 @@ import InputDefault from "../InputDefault/InputDefault";
 import Button from "../Button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { add } from "./../../store/contactDetailSlice";
+import { useParams } from "react-router-dom";
 import styles from "./AddDetails.module.css";
 
 const AddDetails = () => {
+  let { email } = useParams();
+  const contactData = useSelector((state) => state.contactData);
+
   const [userDetails, setUserDetails] = useState({
     name: "",
     email: "",
@@ -19,10 +23,12 @@ const AddDetails = () => {
     city: "",
     avatar: "",
   });
-  const email = new URL(window.location.href).searchParams.get("email");
 
-
-  // setUserDetails(contacts[email]);
+  useEffect(() => {
+    if (email) {
+      setUserDetails(contactData[email]);
+    }
+  }, [email]);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -61,7 +67,6 @@ const AddDetails = () => {
       avatar: imageUrl,
     }));
   };
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -142,7 +147,7 @@ const AddDetails = () => {
         type="text"
         _inputMode="numeric"
         handleValue={handleZipCode}
-        inputLabel="Zipcode"
+        inputLabel="Postal Code"
         index={6}
         autoComplete="postal-code"
         placeholder="e.g. 11111"

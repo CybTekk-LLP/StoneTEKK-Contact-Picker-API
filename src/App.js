@@ -14,7 +14,7 @@ function App() {
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>
         <Route index element={<AddContacts />} />
-        <Route path="/details" element={<AddDetails />} />
+        <Route path="/details/:email?" element={<AddDetails />} />
       </Route>
     )
   );

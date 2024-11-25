@@ -26,7 +26,7 @@ function AddContacts() {
   const contactData = useSelector((state) => state.contactData);
 
   const handleDelete = (email) => {
-    dispatch(remove(email));  
+    dispatch(remove(email));
     const updatedContacts = { ...selectedContacts };
     delete updatedContacts[email];
 
@@ -34,8 +34,8 @@ function AddContacts() {
     setContextMenuVisible(false);
   };
 
-  const handleEdit = (encodedEmail) => {
-    navigate("/details?email=" + encodedEmail);
+  const handleEdit = (email) => {
+    navigate(`/details/${email}`);
   };
 
   const options = [
@@ -73,10 +73,6 @@ function AddContacts() {
       console.error("Error selecting contacts:", error);
     }
   };
-
- 
-
-
 
   const sortedContacts = () => {
     let contactsArray = [
@@ -119,9 +115,7 @@ function AddContacts() {
     });
   };
 
-  const handleSendMail = () => {
-  
-  };
+  const handleSendMail = () => {};
 
   const toggleContextMenu = (email) => {
     if (email === emailId) {
@@ -200,7 +194,7 @@ function AddContacts() {
                   src={contact.avatar || defaultProfilePic}
                   name={contact.name}
                   tel={contact.mobileNo}
-                  address={`${contact.houseNo} ${contact.streetName}, ${contact.city} ${contact.zipCode}`}
+                  address={`${contact.houseNo} ${contact.streetName} ${contact.city} ${contact.zipCode}`}
                   toggleMenu={() => toggleContextMenu(contact.email)}
                 />
                 <div className={styles.menu}>
@@ -208,11 +202,9 @@ function AddContacts() {
                     <ContextMenu
                       text="Edit Contact"
                       textDanger="Delete"
-                      textColor="Var(--primary-active)"
+                      textColor="var(--primary-active)"
                       textColorDanger="var(--danger)"
-                      editContact={() =>
-                        handleEdit(encodeURIComponent(contact.email))
-                      }
+                      editContact={() => handleEdit(contact.email)}
                       deleteContact={() => handleDelete(contact.email)}
                     />
                   )}
