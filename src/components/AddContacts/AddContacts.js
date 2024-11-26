@@ -228,14 +228,16 @@ const AddContacts = () => {
                 toggleMenu={() => toggleContextMenu(contact.email)}
               />
               {contextMenuVisible && emailId === contact.email && (
-                <ContextMenu
-                  text="Edit Contact"
-                  textDanger="Delete"
-                  textColor="var(--primary-active)"
-                  textColorDanger="var(--danger)"
-                  editContact={() => handleEdit(contact.email)}
-                  deleteContact={() => handleDelete(contact.email)}
-                />
+                <div className={styles.menu}>
+                  <ContextMenu
+                    text="Edit Contact"
+                    textDanger="Delete"
+                    textColor="var(--primary-active)"
+                    textColorDanger="var(--danger)"
+                    editContact={() => handleEdit(contact.email)}
+                    deleteContact={() => handleDelete(contact.email)}
+                  />
+                </div>
               )}
             </div>
           ))}
