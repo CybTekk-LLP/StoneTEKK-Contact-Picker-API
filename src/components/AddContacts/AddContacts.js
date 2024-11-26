@@ -71,16 +71,18 @@ const AddContacts = () => {
       const supported = "contacts" in navigator && "ContactsManager" in window;
       if (supported) {
         const newContacts = await navigator.contacts.select(props, opts);
-        setContacts({
-          name: newContacts.name,
-          email: newContacts.email[0],
-          icon: newContacts.icon,
-          mobileNo: newContacts.tel[0],
+        setContacts(newContacts.map((newContact) =>
+        ({
+          name: newContact.name,
+          email: newContact.email[0],
+          icon: newContact.icon,
+          mobileNo: newContact.tel[0],
           houseNo: "",
-          streetName: newContacts.address,
+          streetName: newContact.address,
           zipCode: "",
           city: "",
-        });
+        })
+        ));
       } else {
         navigate("/details");
       }
@@ -236,7 +238,7 @@ const AddContacts = () => {
           text={selectedOption}
           options={options}
           onSelect={handleSelect}
-          toggleDropdown={() => {}}
+          toggleDropdown={() => { }}
         />
       </div>
       <br />
