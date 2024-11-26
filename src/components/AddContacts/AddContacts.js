@@ -70,12 +70,19 @@ const AddContacts = () => {
       const props = ["name", "email", "tel", "address", "icon"];
       const opts = { multiple: true };
       if ("contacts" in navigator) {
-        const newContacts = await navigator.contacts.select(props, opts);
-        setTemp(newContacts);
-        setContacts((prev) => ({
-          ...prev,
+        let newContacts = await navigator.contacts.select(props, opts);
+        newContacts = {
+          name: newContacts.name,
+          email: newContacts.email[0],
+          icon: newContacts.icon,
           mobileNo: newContacts.tel[0],
-        }));
+          streetName: newContacts.streetName,
+          zipCode: newContacts.postalCode,
+          city: newContacts.city,
+          houseNo: newContacts.houseNo,
+        };
+        setTemp(newContacts);
+        setContacts(newContacts);
       } else {
         navigate("/details");
       }
