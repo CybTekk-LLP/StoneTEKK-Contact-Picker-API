@@ -74,7 +74,6 @@ const AddContacts = () => {
         setTemp(newContacts);
         setContacts((prev) => ({
           ...prev,
-          email: newContacts.email[0],
           mobileNo: newContacts.tel[0],
         }));
       } else {
