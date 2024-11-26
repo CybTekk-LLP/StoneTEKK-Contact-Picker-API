@@ -77,10 +77,10 @@ const AddContacts = () => {
           email: newContact.email[0],
           icon: newContact.icon,
           mobileNo: newContact.tel[0],
-          houseNo: newContact.address.addressLine,
+          houseNo: newContact.address[0].addressLine,
           streetName: "",
-          zipCode: newContact.address.postalCode || newContact.address.sortingCode,
-          city: newContact.address.city,
+          zipCode: newContact.address[0].postalCode || newContact.address[0].sortingCode,
+          city: newContact.address[0].city,
         })
         ));
       } else {
