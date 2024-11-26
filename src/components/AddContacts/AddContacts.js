@@ -200,11 +200,11 @@ const AddContacts = () => {
           icon: contact.icon || defaultProfilePic,
           name: contact.name,
           email: contact.email,
-          mobileNo: contact.tel,
-          houseNo: contact.address || "",
-          streetName: "",
-          zipCode: "",
-          city: "",
+          mobileNo: contact.mobileNo,
+          houseNo: contact.houseNo || "",
+          streetName: contact.streetName || "",
+          zipCode: contact.zipCode || "",
+          city: contact.city || "",
         };
         return acc;
       }, {});
