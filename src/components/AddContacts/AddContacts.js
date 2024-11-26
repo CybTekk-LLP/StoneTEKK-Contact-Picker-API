@@ -77,6 +77,7 @@ const AddContacts = () => {
       }
     } catch (error) {
       console.error("Error selecting contacts:", error);
+      navigate("/details");
     }
   };
 
