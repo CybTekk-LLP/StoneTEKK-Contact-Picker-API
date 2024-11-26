@@ -70,17 +70,7 @@ const AddContacts = () => {
       const opts = { multiple: true };
       if ("contacts" in navigator) {
         const newContacts = await navigator.contacts.select(props, opts);
-        setContacts((prev) => ({
-          ...prev,
-          name: newContacts.name[0],
-          email: newContacts.email[0],
-          mobileNo: newContacts.mobileNo[0],
-          houseNo: newContacts.houseNo,
-          streetName: newContacts.streetName,
-          zipCode: newContacts.zipCode,
-          city: newContacts.city,
-          icon: newContacts.icon,
-        }));
+        setContacts({ newContacts });
       } else {
         navigate("/details");
       }
