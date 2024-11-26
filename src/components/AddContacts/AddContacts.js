@@ -22,6 +22,7 @@ const AddContacts = () => {
   const [isDisabled, setIsDisabled] = useState(false);
   const [contextMenuVisible, setContextMenuVisible] = useState(false);
   const [showToast, setShowToast] = useState(undefined);
+  const [temp, setTemp] = useState();
   const [toastConfigs, setToastConfigs] = useState({
     title: "",
     description: "",
@@ -70,7 +71,8 @@ const AddContacts = () => {
       const opts = { multiple: true };
       if ("contacts" in navigator) {
         const newContacts = await navigator.contacts.select(props, opts);
-        setContacts({ newContacts });
+        setTemp(newContacts);
+        setContacts(newContacts);
       } else {
         navigate("/details");
       }
@@ -215,6 +217,7 @@ const AddContacts = () => {
       />
       <br />
       <Searchbar onSearch={handleSearch} />
+      <p>{JSON.stringify(temp)}</p>
       <div className={styles.sortWrapper}>
         <Typography
           text="Sort By:"
@@ -242,7 +245,6 @@ const AddContacts = () => {
           {filterContacts().map((contact) => {
             return (
               <div key={contact.email} className={styles.card}>
-                <p>{JSON.stringify(contact)}</p>
                 <Card
                   key={contact.email}
                   src={contact.icon || defaultProfilePic}
