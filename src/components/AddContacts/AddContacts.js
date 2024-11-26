@@ -68,15 +68,18 @@ const AddContacts = () => {
     try {
       const props = ["name", "email", "tel", "address", "icon"];
       const opts = { multiple: true };
-      const supported = ('contacts' in navigator && 'ContactsManager' in window);
+      const supported = "contacts" in navigator && "ContactsManager" in window;
       if (supported) {
-        let newContacts = await navigator.contacts.select(props, opts);
+        const newContacts = await navigator.contacts.select(props, opts);
         setContacts({
           name: newContacts.name,
           email: newContacts.email[0],
           icon: newContacts.icon,
           mobileNo: newContacts.tel[0],
+          houseNo: "",
           streetName: newContacts.address,
+          zipCode: "",
+          city: "",
         });
       } else {
         navigate("/details");
