@@ -242,6 +242,7 @@ const AddContacts = () => {
           {filterContacts().map((contact) => {
             return (
               <div key={contact.email} className={styles.card}>
+                <p>{JSON.stringify(contact)}</p>
                 <Card
                   key={contact.email}
                   src={contact.icon || defaultProfilePic}
