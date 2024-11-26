@@ -75,7 +75,7 @@ const AddContacts = () => {
         ({
           name: newContact.name,
           email: newContact?.email[0] || "",
-          icon: newContact?.icons[0]?.value || "",
+          icon: URL.createObjectURL(newContact?.icon || ""),
           mobileNo: newContact?.tel[0] || "",
           houseNo: newContact?.address[0]?.addressLine || "",
           streetName: "",
