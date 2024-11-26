@@ -22,7 +22,6 @@ const AddContacts = () => {
   const [isDisabled, setIsDisabled] = useState(false);
   const [contextMenuVisible, setContextMenuVisible] = useState(false);
   const [showToast, setShowToast] = useState(undefined);
-  const [temp, setTemp] = useState();
   const [toastConfigs, setToastConfigs] = useState({
     title: "",
     description: "",
@@ -71,18 +70,15 @@ const AddContacts = () => {
       const opts = { multiple: true };
       if ("contacts" in navigator) {
         let newContacts = await navigator.contacts.select(props, opts);
-        newContacts = {
+        setContacts({
           name: newContacts.name,
           email: newContacts.email[0],
           icon: newContacts.icon,
           mobileNo: newContacts.tel[0],
-          streetName: newContacts.streetName,
-          zipCode: newContacts.postalCode,
+          streetName: newContacts.address,
           city: newContacts.city,
           houseNo: newContacts.houseNo,
-        };
-        setTemp(newContacts);
-        setContacts(newContacts);
+        });
       } else {
         navigate("/details");
       }
@@ -227,7 +223,6 @@ const AddContacts = () => {
       />
       <br />
       <Searchbar onSearch={handleSearch} />
-      <p>{JSON.stringify(temp)}</p>
       <div className={styles.sortWrapper}>
         <Typography
           text="Sort By:"
