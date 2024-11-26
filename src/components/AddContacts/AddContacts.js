@@ -15,8 +15,6 @@ import styles from "./AddContacts.module.css";
 
 const AddContacts = () => {
   const [selectedOption, setSelectedOption] = useState("All Contacts");
-  const [selectedContacts, setSelectedContacts] = useState({});
-  const [contacts, setContacts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [emailId, setEmailId] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
@@ -35,10 +33,6 @@ const AddContacts = () => {
 
   const handleDelete = (email) => {
     dispatch(remove(email));
-    const updatedContacts = { ...selectedContacts };
-    delete updatedContacts[email];
-
-    setSelectedContacts(updatedContacts);
     setContextMenuVisible(false);
   };
 
@@ -54,8 +48,6 @@ const AddContacts = () => {
     "Descending Z-A",
   ];
 
-  const allContacts = { ...contactData };
-
   const handleSelect = (option) => {
     setSelectedOption(option);
   };
@@ -68,25 +60,27 @@ const AddContacts = () => {
     try {
       const props = ["name", "email", "tel", "address", "icon"];
       const opts = { multiple: true };
-      const supported = "contacts" in navigator && "ContactsManager" in window;
-      if (supported) {
+      if ("contacts" in navigator && "ContactsManager" in window) {
         const newContacts = await navigator.contacts.select(props, opts);
-        setContacts(
-          newContacts.map((newContact) => ({
-            name: newContact.name,
-            email: newContact?.email[0] || "",
-            icon: newContact?.icon || "",
-            mobileNo: newContact?.tel[0] || "",
-            houseNo: newContact?.address[0]?.addressLine || "",
-            streetName: "",
-            zipCode:
-              newContact?.address[0]?.postalCode ||
-              newContact?.address[0]?.sortingCode ||
-              "",
-            city: newContact?.address[0]?.city,
-          }))
-        );
-        for (const contact of contacts) dispatch(add(contact));
+
+        // Dispatch contacts to the Redux store
+        newContacts.forEach((contact) => {
+          dispatch(
+            add({
+              name: contact.name,
+              email: contact?.email[0] || "",
+              icon: contact?.icon || defaultProfilePic,
+              mobileNo: contact?.tel[0] || "",
+              houseNo: contact?.address[0]?.addressLine || "",
+              streetName: "",
+              zipCode:
+                contact?.address[0]?.postalCode ||
+                contact?.address[0]?.sortingCode ||
+                "",
+              city: contact?.address[0]?.city || "",
+            })
+          );
+        });
       } else {
         navigate("/details");
       }
@@ -97,27 +91,20 @@ const AddContacts = () => {
   };
 
   const sortedContacts = () => {
-    let contactsArray = [
-      ...new Set([
-        ...Object.keys(allContacts),
-        ...Object.keys(selectedContacts),
-      ]),
-    ].map((email) => {
-      return allContacts[email] || selectedContacts[email];
-    });
+    const contactsArray = Object.values(contactData);
 
     switch (selectedOption) {
       case "Newest First":
-        return contactsArray.reverse();
+        return [...contactsArray].reverse();
 
       case "Oldest First":
         return contactsArray;
 
       case "Ascending A-Z":
-        return contactsArray.sort((a, b) => a.name.localeCompare(b.name));
+        return [...contactsArray].sort((a, b) => a.name.localeCompare(b.name));
 
       case "Descending Z-A":
-        return contactsArray.sort((a, b) => b.name.localeCompare(a.name));
+        return [...contactsArray].sort((a, b) => b.name.localeCompare(a.name));
 
       default:
         return contactsArray;
@@ -140,7 +127,7 @@ const AddContacts = () => {
   const handleSendMail = async () => {
     setIsDisabled(true);
     const emailData = {
-      to: [Object.keys(contactData)],
+      to: Object.keys(contactData),
       subject: "Experimental Mail Using Contact Picker API",
     };
 
@@ -162,22 +149,20 @@ const AddContacts = () => {
       }
 
       const responseData = await response.json();
-      setToastConfigs((prev) => ({
-        ...prev,
-        title: "Sucessfully Sent Emails",
+      setToastConfigs({
+        title: "Successfully Sent Emails",
         description:
           "The mails have been sent and your retailers will receive them shortly.",
         type: "success",
-      }));
+      });
       setShowToast(true);
     } catch (error) {
-      setToastConfigs((prev) => ({
-        ...prev,
+      setToastConfigs({
         title: "Failed to Send Emails",
         description:
           "The mails couldn't be sent as we might be testing things.",
         type: "failure",
-      }));
+      });
       setShowToast(false);
     } finally {
       setIsDisabled(false);
@@ -195,29 +180,6 @@ const AddContacts = () => {
       setContextMenuVisible(true);
     }
   };
-
-  useEffect(() => {
-    if (contacts.length > 0) {
-      const updatedContacts = contacts.reduce((acc, contact) => {
-        const email = contact.email || "no-email";
-        acc[email] = {
-          icon: contact.icon || defaultProfilePic,
-          name: contact.name,
-          email: contact.email,
-          mobileNo: contact.mobileNo,
-          houseNo: contact.houseNo || "",
-          streetName: contact.streetName || "",
-          zipCode: contact.zipCode || "",
-          city: contact.city || "",
-        };
-        return acc;
-      }, {});
-
-      const mergedContacts = { ...selectedContacts, ...updatedContacts };
-
-      setSelectedContacts(mergedContacts);
-    }
-  }, [contacts, selectedContacts]);
 
   return (
     <main className={styles.main}>
@@ -255,32 +217,28 @@ const AddContacts = () => {
 
       {filterContacts().length > 0 ? (
         <div className={styles.cards}>
-          {filterContacts().map((contact) => {
-            return (
-              <div key={contact.email} className={styles.card}>
-                <Card
-                  key={contact.email}
-                  src={contact.icon || defaultProfilePic}
-                  name={contact.name}
-                  tel={contact.mobileNo}
-                  address={`${contact.houseNo} ${contact.streetName} ${contact.city} ${contact.zipCode}`}
-                  toggleMenu={() => toggleContextMenu(contact.email)}
+          {filterContacts().map((contact) => (
+            <div key={contact.email} className={styles.card}>
+              <Card
+                key={contact.email}
+                src={contact.icon || defaultProfilePic}
+                name={contact.name}
+                tel={contact.mobileNo}
+                address={`${contact.houseNo} ${contact.streetName} ${contact.city} ${contact.zipCode}`}
+                toggleMenu={() => toggleContextMenu(contact.email)}
+              />
+              {contextMenuVisible && emailId === contact.email && (
+                <ContextMenu
+                  text="Edit Contact"
+                  textDanger="Delete"
+                  textColor="var(--primary-active)"
+                  textColorDanger="var(--danger)"
+                  editContact={() => handleEdit(contact.email)}
+                  deleteContact={() => handleDelete(contact.email)}
                 />
-                <div className={styles.menu}>
-                  {contextMenuVisible && emailId === contact.email && (
-                    <ContextMenu
-                      text="Edit Contact"
-                      textDanger="Delete"
-                      textColor="var(--primary-active)"
-                      textColorDanger="var(--danger)"
-                      editContact={() => handleEdit(contact.email)}
-                      deleteContact={() => handleDelete(contact.email)}
-                    />
-                  )}
-                </div>
-              </div>
-            );
-          })}
+              )}
+            </div>
+          ))}
         </div>
       ) : (
         <div className={styles.emptyState}>
