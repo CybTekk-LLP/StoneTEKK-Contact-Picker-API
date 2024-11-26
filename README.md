@@ -30,32 +30,29 @@ This time-saving feature improves the dealer's workflow, providing a modernized 
 ---
 
 
-
-
-https://github.com/user-attachments/assets/ba31f496-4fd1-460a-ba01-536dca1d5286
-
-
-
-https://github.com/user-attachments/assets/1215e38c-894e-4355-ae43-2d3ed118dd08
-
-
-
-https://github.com/user-attachments/assets/7337efdb-2b34-4381-9770-b7dd35f55f31
-
-![Chrome version 131 on iOS](https://github.com/user-attachments/assets/81e2d019-f283-4ad1-a240-c2b71083c58e)
-
-
-
 ## App UI
 
+The supported vendor for Contact Picker is android, where our UI is minimal as well as secure, the Dealer can see the people and emails he's adding to send orders and he doesn't have to fill the form multiple times for Retailers not on our System with same recurring order requests.
+
 ![Minimal UI](https://github.com/user-attachments/assets/324b2c1a-1d8f-4183-9133-818c6760c8ed)
+
+https://github.com/user-attachments/assets/7337efdb-2b34-4381-9770-b7dd35f55f31
 
 ---
 
 ## Fallback UI
 
+For vendors not supporting the Contact Picker API, the fallback is a form with autofill. While this is fully supported, it's a slow process and affects our conversion rates. 
+
 ![UI Fallback for vendors without Contact Picker API support](https://github.com/user-attachments/assets/18b80f23-c1b8-42a2-a779-8ada2cdf9631)
 
+https://github.com/user-attachments/assets/ba31f496-4fd1-460a-ba01-536dca1d5286
+
+https://github.com/user-attachments/assets/1215e38c-894e-4355-ae43-2d3ed118dd08
+
+Even though Chrome has a support for Contact Picker API, iOS lacks a dedicated UI at the time of writing, making Contact Picker not work on iOS devices.
+
+![Chrome version 131 on iOS](https://github.com/user-attachments/assets/81e2d019-f283-4ad1-a240-c2b71083c58e)
 
 ## Email UI
 
