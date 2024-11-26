@@ -74,13 +74,16 @@ const AddContacts = () => {
         setContacts(
           newContacts.map((newContact) => ({
             name: newContact.name,
-            email: newContact.email[0],
-            icon: newContact.icon,
-            mobileNo: newContact.tel[0],
-            houseNo: newContact.address[0],
+            email: newContact?.email[0] || "",
+            icon: newContact?.icon || "",
+            mobileNo: newContact?.tel[0] || "",
+            houseNo: newContact?.address[0]?.addressLine || "",
             streetName: "",
-            zipCode: "",
-            city: "",
+            zipCode:
+              newContact?.address[0]?.postalCode ||
+              newContact?.address[0]?.sortingCode ||
+              "",
+            city: newContact?.address[0]?.city,
           }))
         );
         dispatch(add(contacts));
