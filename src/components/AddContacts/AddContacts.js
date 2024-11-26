@@ -68,7 +68,7 @@ const AddContacts = () => {
           dispatch(
             add({
               name: contact?.name?.join(" ") || "",
-              email: contact?.email[0] || "",
+              email: contact?.email[0] || "email@example.com",
               icon: contact?.icon || defaultProfilePic,
               mobileNo: contact?.tel[0] || "",
               houseNo: contact?.address[0]?.addressLine || "",
