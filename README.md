@@ -29,11 +29,33 @@ This time-saving feature improves the dealer's workflow, providing a modernized 
 
 ---
 
+
+
+
+https://github.com/user-attachments/assets/ba31f496-4fd1-460a-ba01-536dca1d5286
+
+
+
+https://github.com/user-attachments/assets/1215e38c-894e-4355-ae43-2d3ed118dd08
+
+
+
+https://github.com/user-attachments/assets/7337efdb-2b34-4381-9770-b7dd35f55f31
+
+![Chrome version 131 on iOS](https://github.com/user-attachments/assets/81e2d019-f283-4ad1-a240-c2b71083c58e)
+
+
+
 ## App UI
 
 ![Minimal UI](https://github.com/user-attachments/assets/324b2c1a-1d8f-4183-9133-818c6760c8ed)
 
 ---
+
+## Fallback UI
+
+![UI Fallback for vendors without Contact Picker API support](https://github.com/user-attachments/assets/18b80f23-c1b8-42a2-a779-8ada2cdf9631)
+
 
 ## Email UI
 
