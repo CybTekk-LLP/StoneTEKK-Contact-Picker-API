@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { add, remove } from "./../../store/contactDetailSlice";
@@ -63,13 +63,12 @@ const AddContacts = () => {
       if ("contacts" in navigator && "ContactsManager" in window) {
         const newContacts = await navigator.contacts.select(props, opts);
 
-        // Dispatch contacts to the Redux store
         newContacts.forEach((contact) => {
           dispatch(
             add({
               name: contact?.name?.join(" ") || "",
               email: contact?.email[0] || "email@example.com",
-              icon: contact?.icon ? URL.createObjectURL(contact?.icon) : defaultProfilePic,
+              icon: contact?.icon && contact?.icon[0] ? URL.createObjectURL(contact?.icon[0]) : defaultProfilePic,
               mobileNo: contact?.tel[0] || "",
               houseNo: contact?.address[0]?.addressLine || "",
               streetName: "",
