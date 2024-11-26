@@ -9,6 +9,7 @@
 .sortWrapper {
     display: flex;
     gap: 10px;
+    margin-block-start: 15px;
 }
 
 .emptyState {
@@ -22,11 +23,11 @@
     gap: 20px;
 }
 
-.card{
+.card {
     position: relative;
 }
 
-.menu{
+.menu {
     position: absolute;
     inset-inline-end: 5px;
     inset-block-end: -100px;

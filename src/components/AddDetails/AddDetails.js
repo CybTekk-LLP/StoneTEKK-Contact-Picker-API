@@ -21,7 +21,7 @@ const AddDetails = () => {
     streetName: "",
     zipCode: "",
     city: "",
-    avatar: "",
+    icon: "",
   });
 
   useEffect(() => {
@@ -69,7 +69,7 @@ const AddDetails = () => {
   const handleImageUrl = (imageUrl) => {
     setUserDetails((prevDetails) => ({
       ...prevDetails,
-      avatar: imageUrl,
+      icon: imageUrl,
     }));
   };
 

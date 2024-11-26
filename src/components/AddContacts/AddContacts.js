@@ -12,7 +12,6 @@ import EmptyState from "../EmptyState/EmptyState";
 import defaultProfilePic from "./../../images/DefaultProfilePic.svg";
 import ContextMenu from "../ContextMenu/ContextMenu";
 import styles from "./AddContacts.module.css";
-import { isDisabled } from "@testing-library/user-event/dist/utils";
 
 const AddContacts = () => {
   const [selectedOption, setSelectedOption] = useState("All Contacts");
@@ -186,7 +185,7 @@ const AddContacts = () => {
       const updatedContacts = contacts.reduce((acc, contact) => {
         const email = contact.email || "no-email";
         acc[email] = {
-          avatar: contact.photo ? contact.photo.url : defaultProfilePic,
+          icon: contact.photo ? contact.photo.url : defaultProfilePic,
           name: contact.name,
           email: contact.email,
           mobileNo: contact.tel,
@@ -216,7 +215,6 @@ const AddContacts = () => {
       />
       <br />
       <Searchbar onSearch={handleSearch} />
-      <br />
       <div className={styles.sortWrapper}>
         <Typography
           text="Sort By:"
@@ -246,7 +244,7 @@ const AddContacts = () => {
               <div key={contact.email} className={styles.card}>
                 <Card
                   key={contact.email}
-                  src={contact.avatar || defaultProfilePic}
+                  src={contact.icon || defaultProfilePic}
                   name={contact.name}
                   tel={contact.mobileNo}
                   address={`${contact.houseNo} ${contact.streetName} ${contact.city} ${contact.zipCode}`}
