@@ -197,14 +197,14 @@ const AddContacts = () => {
       const updatedContacts = contacts.reduce((acc, contact) => {
         const email = contact.email || "no-email";
         acc[email] = {
-          icon: contact.photo ? contact.photo.url : defaultProfilePic,
+          icon: contact.icon || defaultProfilePic,
           name: contact.name,
           email: contact.email,
           mobileNo: contact.tel,
-          houseNo: contact.address?.house || "",
-          streetName: contact.address?.street || "",
-          zipCode: contact.address?.postalCode || "",
-          city: contact.address?.city || "",
+          houseNo: contact.address || "",
+          streetName: "",
+          zipCode: "",
+          city: "",
         };
         return acc;
       }, {});
