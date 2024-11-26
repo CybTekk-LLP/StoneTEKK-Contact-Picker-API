@@ -86,7 +86,7 @@ const AddContacts = () => {
             city: newContact?.address[0]?.city,
           }))
         );
-        dispatch(add(contacts));
+        for (const contact of contacts) dispatch(add(contact));
       } else {
         navigate("/details");
       }
