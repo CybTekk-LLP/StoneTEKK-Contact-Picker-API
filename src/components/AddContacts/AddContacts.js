@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { remove } from "./../../store/contactDetailSlice";
+import { add, remove } from "./../../store/contactDetailSlice";
 import Typography from "../Typography/Typography";
 import Select from "../Select/Select";
 import Searchbar from "../Searchbar/Searchbar";
@@ -71,18 +71,19 @@ const AddContacts = () => {
       const supported = "contacts" in navigator && "ContactsManager" in window;
       if (supported) {
         const newContacts = await navigator.contacts.select(props, opts);
-        setContacts(newContacts.map((newContact) =>
-        ({
-          name: newContact.name,
-          email: newContact.email[0],
-          icon: newContact.icon,
-          mobileNo: newContact.tel[0],
-          houseNo: newContact.address[0],
-          streetName: "",
-          zipCode: "",
-          city: "",
-        })
-        ));
+        setContacts(
+          newContacts.map((newContact) => ({
+            name: newContact.name,
+            email: newContact.email[0],
+            icon: newContact.icon,
+            mobileNo: newContact.tel[0],
+            houseNo: newContact.address[0],
+            streetName: "",
+            zipCode: "",
+            city: "",
+          }))
+        );
+        dispatch(add(contacts));
       } else {
         navigate("/details");
       }
@@ -238,7 +239,7 @@ const AddContacts = () => {
           text={selectedOption}
           options={options}
           onSelect={handleSelect}
-          toggleDropdown={() => { }}
+          toggleDropdown={() => {}}
         />
       </div>
       <br />
