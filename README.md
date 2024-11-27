@@ -58,6 +58,7 @@ Even though Chrome has a support for Contact Picker API, iOS lacks a dedicated U
 
 ## Email UI
 
+The email UI sent to retailers when orders are sent using Contact Picker API. For us retailers not on our Stone Management system have been proven to get onboarded 70% faster by this API which has potential to help million dollar businesses by reducing times (for us in the stone industry).
 <img width="400" alt="Email UI" src="https://github.com/user-attachments/assets/425eb5f8-9b5c-4034-9c4e-23fd4045c8e5">
 
 ---
