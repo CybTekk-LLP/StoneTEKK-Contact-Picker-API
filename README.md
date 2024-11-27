@@ -84,7 +84,7 @@ Despite these limitations, the Contact Picker API is a game-changer for applicat
 We have requested vendors to support the `Contact Picker API` on a priority basis as million dollar businesses are impacted due to its absense (in our case, it's in the Stone Industry). The issues are being tracked here:
 
 - Chrome [Contact Picker Feature Request | Chromium](https://issues.chromium.org/issues/380990251)
-- Firefox [Contact Picker | Bugzilla issu](https://bugzilla.mozilla.org/show_bug.cgi?id=1933450)
+- Firefox [Contact Picker | Bugzilla issue](https://bugzilla.mozilla.org/show_bug.cgi?id=1933450)
 - Safari [Contact Picker API for Webkit](https://bugs.webkit.org/show_bug.cgi?id=283713)
 
 ## Contributing
@@ -92,7 +92,8 @@ We have requested vendors to support the `Contact Picker API` on a priority basi
 We welcome contributions to improve the app!
 
 1. Fork the repository and create a new branch for your feature.
-2. Submit a pull request with detailed descriptions of your changes.
+2. Running `npm i` and `npm run start` will make the React app started on `localhost:3000`.
+3. Submit a pull request with detailed descriptions of your changes.
 
 If you encounter issues or have suggestions, please open an issue in the repository.
 
