@@ -79,6 +79,14 @@ Despite these limitations, the Contact Picker API is a game-changer for applicat
 
 ---
 
+### Vendor Issues for Feature Request:
+
+We have requested vendors to support the `Contact Picker API` on a priority basis as million dollar businesses are impacted due to its absense (in our case, it's in the Stone Industry). The issues are being tracked here:
+
+- Chrome [Contact Picker Feature Request | Chromium](https://issues.chromium.org/issues/380990251)
+- Firefox [Contact Picker | Bugzilla issu](https://bugzilla.mozilla.org/show_bug.cgi?id=1933450)
+- Safari [Contact Picker API for Webkit](https://bugs.webkit.org/show_bug.cgi?id=283713)
+
 ## Contributing
 
 We welcome contributions to improve the app!
